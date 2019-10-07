@@ -1,13 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Projeto de Integração - A.I.Stein
+ * CEFET-MG
+ * INF-3A 2019
+ * Arthut Marcolino, Gabriel Cruz, Heitor Santos, Italo Nascimento
  */
-package com.tcc.table;
+package com.aistein.table;
 
 /**
  *
- * @author Arthur
+ * @author Arthur Marcolino
  */
 public class Admin {
     private String Materia;
