@@ -1,0 +1,10 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Projeto de Integracao - A.I.Stein
+${licensePrefix}CEFET-MG 
+${licensePrefix}INF-3A 2019
+${licensePrefix}Arthut Marcolino, Gabriel Cruz, Heitor Santos, Italo Nascimento
+<#if licenseLast??>
+${licenseLast}
+</#if>
