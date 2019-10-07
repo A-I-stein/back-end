@@ -32,13 +32,13 @@ public class BackToFrontServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String resposta = "";
-        String requisicao = request.getParameter("requisicao");
+        String req = request.getParameter("req");
         String tipo = request.getParameter("tipo");
         Boolean res = false;
         /**
          * Switch que define qual operação será feita, são elas:
          */
-        switch (requisicao) {
+        switch (req) {
             case "checkStatus":
                 resposta = "Comunicação feita com sucesso";
             break;     
