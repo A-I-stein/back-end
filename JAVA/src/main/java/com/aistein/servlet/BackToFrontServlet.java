@@ -5,8 +5,13 @@
  */
 package com.aistein.servlet;
 
+import com.aistein.util.SQL;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +35,7 @@ public class BackToFrontServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         String resposta = "";
         String req = request.getParameter("req");
         String tipo = request.getParameter("tipo");
@@ -39,9 +44,18 @@ public class BackToFrontServlet extends HttpServlet {
          * Switch que define qual operação será feita, são elas:
          */
         switch (req) {
-            case "checkStatus":
-                resposta = "Comunicação feita com sucesso";
-            break;     
+            case "buscarJogo":            
+            ResultSet teste = null;
+            teste = SQL.query("SELECT * FROM jogos;");
+            while(teste.next()){
+                System.out.println("ID:" + teste.getInt("codJogo"));
+                System.out.println("NOME:" + teste.getString("nomJogo"));
+                System.out.println("URL:" + teste.getString("urlJogo"));
+                resposta = teste.getString("urlJogo");
+            }
+            
+            break;
+     
             default:
         }        
         try (PrintWriter out = response.getWriter()) {
@@ -61,7 +75,11 @@ public class BackToFrontServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(BackToFrontServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -75,7 +93,11 @@ public class BackToFrontServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(BackToFrontServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
