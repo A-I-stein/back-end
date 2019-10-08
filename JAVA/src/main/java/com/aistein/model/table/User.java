@@ -1,17 +1,23 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Projeto de Integracao - A.I.Stein
+ * CEFET-MG 
+ * INF-3A 2019
+ * Arthut Marcolino, Gabriel Cruz, Heitor Santos, Italo Nascimento
  */
-package com.aistein.table;
+
+package com.aistein.model.table;
 
 /**
  *
  * @author Arthur
  */
 public class User {
+    @Id
+    private String username;
     private String nome, email, senha;
-    private long ID;
+    private Date dataCadastro, dataNascimento;
+    private char idtTipo;
+    private int foto, genero;
 
     public User() {
     }
