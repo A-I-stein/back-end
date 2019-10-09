@@ -1,4 +1,4 @@
-﻿/*
+/*
 Created: 08/05/2019
 Modified: 09/10/2019
 Project: A.I.stein
@@ -8,12 +8,6 @@ Author: Gabriel Cruz
 Version: 2.0
 Database: PostgreSQL 10
 */
-
-
--- Create schemas section -------------------------------------------------
-
-CREATE SCHEMA "Schema1"
-;
 
 -- Create tables section -------------------------------------------------
 
@@ -199,7 +193,7 @@ ALTER TABLE "ImagemAnexaAPublicacao" ADD CONSTRAINT "PK_ImagemAnexaAPublicacao" 
 
 -- Table Jogo
 
-CREATE TABLE "Jogo"(
+CREATE TABLE Jogo(
  "CodigoJogo" Serial NOT NULL,
  "NomeJogo" Character varying NOT NULL,
  "URLJogo" Character varying NOT NULL,
