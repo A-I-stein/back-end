@@ -24,7 +24,7 @@ CREATE TABLE Usuario(
  Nome Name NOT NULL,
  Senha Character varying(20) DEFAULT 64 NOT NULL,
  Email Character varying(40) NOT NULL,
- Data_Cadastro Date DEFAULT CURRENT_DATE NOT NULL,
+ Data_Cadastro Date DEFAULT DataAtual = <%CurDate()%> NOT NULL,
  Identificador_Tipo Character(1) NOT NULL,
  Foto Integer,
  Genero Integer,
