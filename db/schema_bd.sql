@@ -1,4 +1,4 @@
-/*
+﻿/*
 Created: 08/05/2019
 Modified: 09/10/2019
 Project: A.I.stein
@@ -24,7 +24,7 @@ CREATE TABLE Usuario(
  Nome Name NOT NULL,
  Senha Character varying(20) DEFAULT 64 NOT NULL,
  Email Character varying(40) NOT NULL,
- Data_Cadastro Date NOT NULL,
+ Data_Cadastro Date DEFAULT DataAtual = <%CurDate()%> NOT NULL,
  Identificador_Tipo Character(1) NOT NULL,
  Foto Integer,
  Genero Integer,
@@ -157,7 +157,7 @@ CREATE TABLE Conteudo(
  Codigo_Conteudo Serial NOT NULL,
  Nome_Conteudo Character varying(30) NOT NULL,
  Texto_Conteudo Text NOT NULL,
- Status_Conteudo Character(1) NOT NULL,
+ Status_Conteudo Character(1),
  Username Character varying(20),
  Materia Integer,
  Data_Publicacao Date,
@@ -228,9 +228,7 @@ ALTER TABLE Jogo ADD CONSTRAINT PK_Jogo PRIMARY KEY (Codigo_Jogo)
 
 CREATE TABLE Questionario(
  Codigo_Questionario Serial NOT NULL,
- Codigo_Materia Integer,
- Codigo_Pergunta Integer NOT NULL,
- Codigo_Resposta Integer NOT NULL
+ Codigo_Materia Integer
 )
 WITH (
  autovacuum_enabled=true)
@@ -243,14 +241,15 @@ CREATE INDEX IX_Relationship19 ON Questionario (Codigo_Materia)
 
 -- Add keys for table Questionario
 
-ALTER TABLE Questionario ADD CONSTRAINT PK_Questionario PRIMARY KEY (Codigo_Questionario,Codigo_Pergunta,Codigo_Resposta)
+ALTER TABLE Questionario ADD CONSTRAINT PK_Questionario PRIMARY KEY (Codigo_Questionario)
 ;
 
 -- Table Pergunta
 
 CREATE TABLE Pergunta(
  Codigo_Pergunta Serial NOT NULL,
- Descricao_Pergunta Text NOT NULL
+ Descricao_Pergunta Text NOT NULL,
+ Codigo_Questionario Integer NOT NULL
 )
 WITH (
  autovacuum_enabled=true)
@@ -258,14 +257,16 @@ WITH (
 
 -- Add keys for table Pergunta
 
-ALTER TABLE Pergunta ADD CONSTRAINT PK_Pergunta PRIMARY KEY (Codigo_Pergunta)
+ALTER TABLE Pergunta ADD CONSTRAINT PK_Pergunta PRIMARY KEY (Codigo_Pergunta,Codigo_Questionario)
 ;
 
 -- Table Resposta
 
 CREATE TABLE Resposta(
  Codigo_Resposta Serial NOT NULL,
- Descricao_Resposta Character varying NOT NULL
+ Descricao_Resposta Character varying NOT NULL,
+ Codigo_Pergunta Integer NOT NULL,
+ Codigo_Questionario Integer NOT NULL
 )
 WITH (
  autovacuum_enabled=true)
@@ -273,9 +274,9 @@ WITH (
 
 -- Add keys for table Resposta
 
-ALTER TABLE Resposta ADD CONSTRAINT PK_Resposta PRIMARY KEY (Codigo_Resposta)
+ALTER TABLE Resposta ADD CONSTRAINT PK_Resposta PRIMARY KEY (Codigo_Resposta,Codigo_Pergunta,Codigo_Questionario)
 ;
--- Create foreign keys (relationships) section -------------------------------------------------
+-- Create foreign keys (relationships) section ------------------------------------------------- 
 
 ALTER TABLE Usuario ADD CONSTRAINT Relationship1 FOREIGN KEY (Genero) REFERENCES Genero (Codigo_Genero) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
@@ -319,8 +320,12 @@ ALTER TABLE Jogo ADD CONSTRAINT Relationship18 FOREIGN KEY (Codigo_Materia) REFE
 ALTER TABLE Questionario ADD CONSTRAINT Relationship19 FOREIGN KEY (Codigo_Materia) REFERENCES Materia (Codigo_Materia) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE Questionario ADD CONSTRAINT Relationship20 FOREIGN KEY (Codigo_Pergunta) REFERENCES Pergunta (Codigo_Pergunta) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE Resposta ADD CONSTRAINT Relationship22 FOREIGN KEY (Codigo_Pergunta, Codigo_Questionario) REFERENCES Pergunta (Codigo_Pergunta, Codigo_Questionario) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE Questionario ADD CONSTRAINT Relationship21 FOREIGN KEY (Codigo_Resposta) REFERENCES Resposta (Codigo_Resposta) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE Pergunta ADD CONSTRAINT Relationship23 FOREIGN KEY (Codigo_Questionario) REFERENCES Questionario (Codigo_Questionario) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
+
+
+
+
