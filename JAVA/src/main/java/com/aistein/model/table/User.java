@@ -6,7 +6,7 @@
  */
 
 package com.aistein.model.table;
-
+import java.util.Date;
 /**
  *
  * @author Arthur
@@ -22,11 +22,11 @@ public class User {
     public User() {
     }
 
-    public User(String nome, String email, String senha, long ID) {
+    public User(String nome, String email, String senha, String username) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.ID = ID;
+        this.username = username;
     }
 
     public String getNome() {
@@ -53,12 +53,12 @@ public class User {
         this.senha = senha;
     }
 
-    public long getID() {
-        return ID;
+    public String getUsername() {
+        return username;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setUsername(String username) {
+        this.username = username;
     }
     
     

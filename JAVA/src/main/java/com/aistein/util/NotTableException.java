@@ -1,3 +1,5 @@
+package com.aistein.util;
+
 ///*
 // * Projeto de Integracao - A.I.Stein
 // * CEFET-MG 
@@ -21,3 +23,5 @@
 //            + "Considere anotá-la com Table.");
 //    }
 //    
+
+
