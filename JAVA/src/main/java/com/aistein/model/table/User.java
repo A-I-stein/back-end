@@ -11,6 +11,7 @@ import java.util.Date;
  *
  * @author Arthur
  */
+@Tabela("usuario")
 public class User {
     @Id
     private String username;
