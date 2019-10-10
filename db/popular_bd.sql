@@ -1,9 +1,3 @@
-
-INSERT INTO Usuario (Username, Nome, Senha, Email, Data_Cadastro, Identificador_Tipo, Foto, Genero)
-	VALUES
-		('Testador','Gabriel','123','teste@email.com', CURRENT_DATE,'A',2,3);
-
-
 INSERT INTO Genero (Nome_Genero)
 	VALUES
 		('Ag�nero'),
@@ -19,6 +13,10 @@ INSERT INTO Imagem (Caminho_Imagem)
 		('http://www.apimages.com/Images/Ap_Creative_Stock_Header.jpg'),
 		('https://edit.co.uk/uploads/2016/12/Image-1-Alternatives-to-stock-photography-Thinkstock.jpg'),
 		('https://static.boredpanda.com/blog/wp-content/uploads/2018/05/emilia-clarke-making-stock-photos-5-5b0801c7504b2__700.jpg');
+
+INSERT INTO Usuario (Username, Nome, Senha, Email, Data_Cadastro, Identificador_Tipo, Foto, Genero)
+	VALUES
+		('Testador','Gabriel','123','teste@email.com', CURRENT_DATE,'A',2,3);
 
 INSERT INTO Materia(Nome_Materia)
 	VALUES
