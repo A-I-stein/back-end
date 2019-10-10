@@ -1,331 +1,63 @@
-﻿/*
-Created: 08/05/2019
-Modified: 09/10/2019
-Project: A.I.stein
-Model: PostgreSQL 10
-Company: A.I.stein
-Author: Gabriel Cruz
-Version: 2.0
-Database: PostgreSQL 10
-*/
 
-
--- Create schemas section -------------------------------------------------
-
-CREATE SCHEMA Schema1
-;
-
--- Create tables section -------------------------------------------------
-
--- Table Usuario
-
-CREATE TABLE Usuario(
- Username Character varying(20) NOT NULL,
- Nome Name NOT NULL,
- Senha Character varying(20) DEFAULT 64 NOT NULL,
- Email Character varying(40) NOT NULL,
- Data_Cadastro Date DEFAULT DataAtual = <%CurDate()%> NOT NULL,
- Identificador_Tipo Character(1) NOT NULL,
- Foto Integer,
- Genero Integer,
- Data_Nascimento Date
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Create indexes for table Usuario
-
-CREATE INDEX IX_Relationship1 ON Usuario (Genero)
-;
-
-CREATE INDEX IX_Relationship9 ON Usuario (Foto)
-;
-
--- Add keys for table Usuario
-
-ALTER TABLE Usuario ADD CONSTRAINT PK_Usuario PRIMARY KEY (Username)
-;
-
--- Table Genero
-
-CREATE TABLE Genero(
- Codigo_Genero Serial NOT NULL,
- Nome_Genero Character varying(20) NOT NULL
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Add keys for table Genero
-
-ALTER TABLE Genero ADD CONSTRAINT PK_Genero PRIMARY KEY (Codigo_Genero)
-;
-
--- Table Imagem
-
-CREATE TABLE Imagem(
- Codigo_Imagem Serial NOT NULL,
- Caminho_Imagem Character varying NOT NULL
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Add keys for table Imagem
-
-ALTER TABLE Imagem ADD CONSTRAINT PK_Imagem PRIMARY KEY (Codigo_Imagem)
-;
-
--- Table Materia
-
-CREATE TABLE Materia(
- Codigo_Materia Serial NOT NULL,
- Nome_Materia Character varying(30) NOT NULL
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Add keys for table Materia
-
-ALTER TABLE Materia ADD CONSTRAINT PK_Materia PRIMARY KEY (Codigo_Materia)
-;
-
--- Table Aluno
-
-CREATE TABLE Aluno(
- Username Character varying(20) NOT NULL,
- Escola Character varying(40) NOT NULL
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Add keys for table Aluno
-
-ALTER TABLE Aluno ADD CONSTRAINT PK_Aluno PRIMARY KEY (Username)
-;
-
--- Table Professor
-
-CREATE TABLE Professor(
- Username Character varying(20) NOT NULL,
- Escola Character varying(40) NOT NULL,
- Materia Integer NOT NULL
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Create indexes for table Professor
-
-CREATE INDEX IX_Relationship8 ON Professor (Materia)
-;
-
--- Add keys for table Professor
-
-ALTER TABLE Professor ADD CONSTRAINT PK_Professor PRIMARY KEY (Username)
-;
-
--- Table Administrador
-
-CREATE TABLE Administrador(
- Username Character varying(20) NOT NULL,
- Escola Character varying(40) NOT NULL,
- Numero_Aprovacoes Integer NOT NULL,
- Tempo_Como_Administrador Time NOT NULL,
- Materia Integer NOT NULL
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Create indexes for table Administrador
-
-CREATE INDEX IX_Relationship7 ON Administrador (Materia)
-;
-
--- Add keys for table Administrador
-
-ALTER TABLE Administrador ADD CONSTRAINT PK_Administrador PRIMARY KEY (Username)
-;
-
--- Table Conteudo
-
-CREATE TABLE Conteudo(
- Codigo_Conteudo Serial NOT NULL,
- Nome_Conteudo Character varying(30) NOT NULL,
- Texto_Conteudo Text NOT NULL,
- Status_Conteudo Character(1),
- Username Character varying(20),
- Materia Integer,
- Data_Publicacao Date,
- Resumo_Conteudo Text NOT NULL,
- Tipo_Conteudo Character(1) NOT NULL,
- Fonte_Conteudo Character varying
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Create indexes for table Conteudo
-
-CREATE INDEX IX_Relationship15 ON Conteudo (Username)
-;
-
-CREATE INDEX IX_Relationship16 ON Conteudo (Materia)
-;
-
--- Add keys for table Conteudo
-
-ALTER TABLE Conteudo ADD CONSTRAINT PK_Conteudo PRIMARY KEY (Codigo_Conteudo)
-;
-
--- Table ImagemAnexaAPublicacao
-
-CREATE TABLE ImagemAnexaAPublicacao(
- Codigo_Imagem Integer NOT NULL,
- Codigo_conteudo Integer NOT NULL
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Add keys for table ImagemAnexaAPublicacao
-
-ALTER TABLE ImagemAnexaAPublicacao ADD CONSTRAINT PK_ImagemAnexaAPublicacao PRIMARY KEY (Codigo_Imagem,Codigo_conteudo)
-;
-
--- Table Jogo
-
-CREATE TABLE Jogo(
- Codigo_Jogo Serial NOT NULL,
- Nome_Jogo Character varying NOT NULL,
- URL Character varying NOT NULL,
- Creditos_Jogo Text NOT NULL,
- Codigo_Imagem Integer NOT NULL,
- Codigo_Materia Integer NOT NULL
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Create indexes for table Jogo
-
-CREATE INDEX IX_Relationship17 ON Jogo (Codigo_Imagem)
-;
-
-CREATE INDEX IX_Relationship18 ON Jogo (Codigo_Materia)
-;
-
--- Add keys for table Jogo
-
-ALTER TABLE Jogo ADD CONSTRAINT PK_Jogo PRIMARY KEY (Codigo_Jogo)
-;
-
--- Table Questionario
-
-CREATE TABLE Questionario(
- Codigo_Questionario Serial NOT NULL,
- Codigo_Materia Integer
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Create indexes for table Questionario
-
-CREATE INDEX IX_Relationship19 ON Questionario (Codigo_Materia)
-;
-
--- Add keys for table Questionario
-
-ALTER TABLE Questionario ADD CONSTRAINT PK_Questionario PRIMARY KEY (Codigo_Questionario)
-;
-
--- Table Pergunta
-
-CREATE TABLE Pergunta(
- Codigo_Pergunta Serial NOT NULL,
- Descricao_Pergunta Text NOT NULL,
- Codigo_Questionario Integer NOT NULL
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Add keys for table Pergunta
-
-ALTER TABLE Pergunta ADD CONSTRAINT PK_Pergunta PRIMARY KEY (Codigo_Pergunta,Codigo_Questionario)
-;
-
--- Table Resposta
-
-CREATE TABLE Resposta(
- Codigo_Resposta Serial NOT NULL,
- Descricao_Resposta Character varying NOT NULL,
- Codigo_Pergunta Integer NOT NULL,
- Codigo_Questionario Integer NOT NULL
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Add keys for table Resposta
-
-ALTER TABLE Resposta ADD CONSTRAINT PK_Resposta PRIMARY KEY (Codigo_Resposta,Codigo_Pergunta,Codigo_Questionario)
-;
--- Create foreign keys (relationships) section ------------------------------------------------- 
-
-ALTER TABLE Usuario ADD CONSTRAINT Relationship1 FOREIGN KEY (Genero) REFERENCES Genero (Codigo_Genero) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Aluno ADD CONSTRAINT Relationship4 FOREIGN KEY (Username) REFERENCES Usuario (Username) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Professor ADD CONSTRAINT Relationship5 FOREIGN KEY (Username) REFERENCES Usuario (Username) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Administrador ADD CONSTRAINT Relationship6 FOREIGN KEY (Username) REFERENCES Usuario (Username) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Administrador ADD CONSTRAINT Relationship7 FOREIGN KEY (Materia) REFERENCES Materia (Codigo_Materia) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Professor ADD CONSTRAINT Relationship8 FOREIGN KEY (Materia) REFERENCES Materia (Codigo_Materia) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Usuario ADD CONSTRAINT Relationship9 FOREIGN KEY (Foto) REFERENCES Imagem (Codigo_Imagem) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE ImagemAnexaAPublicacao ADD CONSTRAINT Relationship13 FOREIGN KEY (Codigo_Imagem) REFERENCES Imagem (Codigo_Imagem) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE ImagemAnexaAPublicacao ADD CONSTRAINT Relationship14 FOREIGN KEY (Codigo_conteudo) REFERENCES Conteudo (Codigo_Conteudo) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Conteudo ADD CONSTRAINT Relationship15 FOREIGN KEY (Username) REFERENCES Usuario (Username) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Conteudo ADD CONSTRAINT Relationship16 FOREIGN KEY (Materia) REFERENCES Materia (Codigo_Materia) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Jogo ADD CONSTRAINT Relationship17 FOREIGN KEY (Codigo_Imagem) REFERENCES Imagem (Codigo_Imagem) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Jogo ADD CONSTRAINT Relationship18 FOREIGN KEY (Codigo_Materia) REFERENCES Materia (Codigo_Materia) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Questionario ADD CONSTRAINT Relationship19 FOREIGN KEY (Codigo_Materia) REFERENCES Materia (Codigo_Materia) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Resposta ADD CONSTRAINT Relationship22 FOREIGN KEY (Codigo_Pergunta, Codigo_Questionario) REFERENCES Pergunta (Codigo_Pergunta, Codigo_Questionario) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Pergunta ADD CONSTRAINT Relationship23 FOREIGN KEY (Codigo_Questionario) REFERENCES Questionario (Codigo_Questionario) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-
-
-
+INSERT INTO Usuario (Username, Nome, Senha, Email, Data_Cadastro, Identificador_Tipo, Foto, Genero)
+	VALUES
+		('Testador','Gabriel','123','teste@email.com', CURRENT_DATE,'A',2,3);
+
+
+INSERT INTO Genero (Nome_Genero)
+	VALUES
+		('Ag�nero'),
+		('Feminino'),
+		('Masculino'),
+		('N�obin�rie'),
+		('Outro');
+
+INSERT INTO Imagem (Caminho_Imagem)
+	VALUES
+		('https://pbs.twimg.com/profile_images/949787136030539782/LnRrYf6e.jpg'),
+		('https://ichef.bbci.co.uk/news/660/cpsprodpb/13F00/production/_95146618_bills.jpg'),
+		('http://www.apimages.com/Images/Ap_Creative_Stock_Header.jpg'),
+		('https://edit.co.uk/uploads/2016/12/Image-1-Alternatives-to-stock-photography-Thinkstock.jpg'),
+		('https://static.boredpanda.com/blog/wp-content/uploads/2018/05/emilia-clarke-making-stock-photos-5-5b0801c7504b2__700.jpg');
+
+INSERT INTO Materia(Nome_Materia)
+	VALUES
+		('Movimento'),
+		('Som & Ondas'),
+		('Trabalho, Energia & Pot�ncia'),
+		('Calor & Termodin�mica'),
+		('Mec�nica Qu�ntica'),
+		('Som & Ondas'),
+		('Luz & Radia��o'),
+		('Electricidade, Magnetismo & Circuitos');
+
+INSERT INTO Usuario (Nome_Conteudo, Texto_Conteudo, Materia, Resumo_Conteudo, Tipo_Conteudo)
+	VALUES
+		('Teoria da Relatividade', 'A Relatividade Especial � uma teoria publicada no ano de 1905 por Albert Einstein, concluindo estudos precedentes do f�sico neerland�s Hendrik Lorentz, entre outros. Ela substitui os conceitos independentes de espa�o e tempo da Teoria de Newton pela ideia de espa�o-tempo como uma entidade geom�trica unificada. O espa�o-tempo na relatividade especial consiste de uma variedade diferenci�vel de 4 dimens�es, tr�s espaciais e uma temporal (a quarta dimens�o), munida de uma m�trica pseudo-riemanniana, o que permite que no��es de geometria possam ser utilizadas. � nessa teoria, tamb�m, que surge a ideia de velocidade da luz invariante.
+
+O termo especial � usado porque ela � um caso particular do princ�pio da relatividade em que efeitos da gravidade s�o ignorados. Dez anos ap�s a publica��o da teoria especial, Einstein publicou a Teoria Geral da Relatividade, que � a vers�o mais ampla da teoria, em que os efeitos da gravita��o s�o integrados, surgindo a no��o de espa�o-tempo curvo.', 4, 'Teoria da Relatividade � a denomina��o dada ao conjunto de duas teorias cient�ficas: a Relatividade Restrita (ou Especial) e a Relatividade Geral.', 'O');
+
+INSERT INTO ImagemAnexaAPublicacao (Codigo_Imagem, Codigo_conteudo )
+	VALUES
+		(1,0);
+
+
+INSERT INTO Questionario(Codigo_Materia)
+	VALUES
+		(1);
+
+INSERT INTO Pergunta(Descricao_Pergunta, Codigo_Questionario)
+	VALUES
+		('Responda com sim o n�o. Porque o c�u � azul?',0), 
+		('Qual das alternativas abaixo representa a melhor letra',0);
+
+INSERT INTO Resposta(Descricao_Resposta, Codigo_Pergunta, Codigo_Questionario)
+	VALUES
+		('vermelho',0,0),
+		('amarelo',0,0),
+		('cinza',0,0),
+		('verde',0,0),
+		('a',1,0),
+		('b',1,0),
+		('c',1,0),
+		('d',1,0);
