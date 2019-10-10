@@ -6,10 +6,10 @@ INSERT INTO Usuario (Username, Nome, Senha, Email, Data_Cadastro, Identificador_
 
 INSERT INTO Genero (Nome_Genero)
 	VALUES
-		('Agênero'),
+		('Agï¿½nero'),
 		('Feminino'),
 		('Masculino'),
-		('Nãobinárie'),
+		('Nï¿½obinï¿½rie'),
 		('Outro');
 
 INSERT INTO Imagem (Caminho_Imagem)
@@ -24,18 +24,18 @@ INSERT INTO Materia(Nome_Materia)
 	VALUES
 		('Movimento'),
 		('Som & Ondas'),
-		('Trabalho, Energia & Potência'),
-		('Calor & Termodinâmica'),
-		('Mecânica Quântica'),
+		('Trabalho, Energia & Potï¿½ncia'),
+		('Calor & Termodinï¿½mica'),
+		('Mecï¿½nica Quï¿½ntica'),
 		('Som & Ondas'),
-		('Luz & Radiação'),
+		('Luz & Radiaï¿½ï¿½o'),
 		('Electricidade, Magnetismo & Circuitos');
 
 INSERT INTO Usuario (Nome_Conteudo, Texto_Conteudo, Materia, Resumo_Conteudo, Tipo_Conteudo)
 	VALUES
-		('Teoria da Relatividade', 'A Relatividade Especial é uma teoria publicada no ano de 1905 por Albert Einstein, concluindo estudos precedentes do físico neerlandês Hendrik Lorentz, entre outros. Ela substitui os conceitos independentes de espaço e tempo da Teoria de Newton pela ideia de espaço-tempo como uma entidade geométrica unificada. O espaço-tempo na relatividade especial consiste de uma variedade diferenciável de 4 dimensões, três espaciais e uma temporal (a quarta dimensão), munida de uma métrica pseudo-riemanniana, o que permite que noções de geometria possam ser utilizadas. É nessa teoria, também, que surge a ideia de velocidade da luz invariante.
+		('Teoria da Relatividade', 'A Relatividade Especial ï¿½ uma teoria publicada no ano de 1905 por Albert Einstein, concluindo estudos precedentes do fï¿½sico neerlandï¿½s Hendrik Lorentz, entre outros. Ela substitui os conceitos independentes de espaï¿½o e tempo da Teoria de Newton pela ideia de espaï¿½o-tempo como uma entidade geomï¿½trica unificada. O espaï¿½o-tempo na relatividade especial consiste de uma variedade diferenciï¿½vel de 4 dimensï¿½es, trï¿½s espaciais e uma temporal (a quarta dimensï¿½o), munida de uma mï¿½trica pseudo-riemanniana, o que permite que noï¿½ï¿½es de geometria possam ser utilizadas. ï¿½ nessa teoria, tambï¿½m, que surge a ideia de velocidade da luz invariante.
 
-O termo especial é usado porque ela é um caso particular do princípio da relatividade em que efeitos da gravidade são ignorados. Dez anos após a publicação da teoria especial, Einstein publicou a Teoria Geral da Relatividade, que é a versão mais ampla da teoria, em que os efeitos da gravitação são integrados, surgindo a noção de espaço-tempo curvo.', 4, 'Teoria da Relatividade é a denominação dada ao conjunto de duas teorias científicas: a Relatividade Restrita (ou Especial) e a Relatividade Geral.', 'O');
+O termo especial ï¿½ usado porque ela ï¿½ um caso particular do princï¿½pio da relatividade em que efeitos da gravidade sï¿½o ignorados. Dez anos apï¿½s a publicaï¿½ï¿½o da teoria especial, Einstein publicou a Teoria Geral da Relatividade, que ï¿½ a versï¿½o mais ampla da teoria, em que os efeitos da gravitaï¿½ï¿½o sï¿½o integrados, surgindo a noï¿½ï¿½o de espaï¿½o-tempo curvo.', 4, 'Teoria da Relatividade ï¿½ a denominaï¿½ï¿½o dada ao conjunto de duas teorias cientï¿½ficas: a Relatividade Restrita (ou Especial) e a Relatividade Geral.', 'O');
 
 INSERT INTO ImagemAnexaAPublicacao (Codigo_Imagem, Codigo_conteudo )
 	VALUES
@@ -48,7 +48,7 @@ INSERT INTO Questionario(Codigo_Materia)
 
 INSERT INTO Pergunta(Descricao_Pergunta, Codigo_Questionario)
 	VALUES
-		('Responda com sim o não. Porque o céu é azul?',0), 
+		('Responda com sim o nï¿½o. Porque o cï¿½u ï¿½ azul?',0), 
 		('Qual das alternativas abaixo representa a melhor letra',0);
 
 INSERT INTO Resposta(Descricao_Resposta, Codigo_Pergunta, Codigo_Questionario)
