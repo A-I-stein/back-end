@@ -46,19 +46,47 @@ public class BackToFrontServlet extends HttpServlet {
          * Switch que define qual operação será feita, são elas:
          */
         switch (req) {
-            case "buscarJogo":            
+            case "buscarJogo":
             ArrayList<Jogo> jogo = JogoAcessService.getAllJogo();
             System.out.println(jogo.toString());
             resposta = jogo.toString();
-                
-                
+
+
             break;
-     
+            /* alguem testa isso aqui
+            
+            case "buscarQuestionario":
+            String respostaPergunta = '';
+            ArrayList<Cod_Perguntas> Cod_perguntas =
+              questionarioAcessService.getAllPerguntas(tipo);
+            ArrayList<Descricao_Resposta> respostas;
+
+              //tipo = cod_questionario/Materia
+              for (  ArrayList<Cod_Perguntas> Cod_perguntas : cod_pergunta ) {
+                //pega a descrição da pergunta
+                respostaPergunta =
+                respostaPergunta.concat
+                (questionarioAcessService.getDescPergunta(tipo,cod_pergunta));
+                //separa a pergunta das respostas apartir de '|'
+                respostaPergunta =
+                respostaPergunta.concat('|');
+                //pega as respostas da pergunta obtida
+                respostaPergunta =
+                respostaPergunta.concat
+                (questionarioAcessService.getAllRespostas(tipo,cod_pergunta));
+                //separa o conjunto anterior a partir de '|'
+                respostaPergunta =
+                respostaPergunta.concat('||');
+              }
+              //supondo que tudo retorne uma string
+              resposta = respostaPergunta;
+              */
+
             default:
-        }        
+        }
         try (PrintWriter out = response.getWriter()) {
             out.println(resposta);
-        }   
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
