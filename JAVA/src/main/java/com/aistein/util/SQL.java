@@ -42,53 +42,7 @@ public final class SQL {
             return null;
         }
         
-    }
-
-    /**
-     * Faz a inserção dos dados de um objeto para a respective tabela.
-     * 
-     * @param objeto com os dados a serem inseridos
-     * @return       se a operação ocorreu com sucesso ou não
-     * @throws       NotTableException
-     */
-    public static boolean insert(Object objeto) throws NotTableException {
-        
-        Map<String, String> campos = getCampos(objeto, true);
-        String[] nomesCampos = campos.keySet().stream().toArray(String[]::new);
-        String[] valoresCampos = campos.values().stream().toArray(String[]::new);
-        String sql = "INSERT INTO " + getNomeTabela(objeto.getClass())
-                +" (" + String.join(", ", nomesCampos) + ")"
-                +  "  VALUES (" + String.join(", ", valoresCampos) + ")";
-        return query(sql) == null;
-        
-    }
-
-    /**
-     * Realiza a atualização dos dados de um objeto na respectiva tabela.
-     *  
-     * @param objeto com os dados a serem atualizados
-     * @return       se a operação ocorreu com sucesso ou não
-     * @throws       NotTableException
-     */
-    public static boolean update(Object objeto) throws NotTableException {
-        
-        Map<String, String> campos = getCampos(objeto, false);
-        String nomeId = getNomeId(objeto.getClass());
-        String id = campos.remove(String.format("'%s'", nomeId));
-        
-        if (id == null || Integer.parseInt(id) < 0)
-            return false;
-        
-        String[] camposUpdate = campos.keySet().stream()
-                .map(nome -> String.format("%s = %s", nome, campos.get(nome)))
-                .toArray(String[]::new);
-        String sql = "UPDATE '" + getNomeTabela(objeto.getClass())
-                + "' SET " + String.join(", ", camposUpdate)
-                + " WHERE " + nomeId + " = " + id;
-        System.out.println(sql);
-        return query(sql) == null;
-        
-    }
+    }   
     
     /**
      * Retorna a conexão com o banco de dados. Ela é instanciada somente

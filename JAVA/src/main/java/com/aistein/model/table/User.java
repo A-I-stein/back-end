@@ -11,9 +11,7 @@ import java.util.Date;
  *
  * @author Arthur
  */
-@Tabela("usuario")
 public class User {
-    @Id
     private String username;
     private String nome, email, senha;
     private Date dataCadastro, dataNascimento;
@@ -21,13 +19,21 @@ public class User {
     private int foto, genero;
 
     public User() {
+        dataCadastro = new Date();
     }
 
-    public User(String nome, String email, String senha, String username) {
+    public User(String nome, String email, String senha, String username, 
+                Date dataNascimento, char idtTipo, int foto, int genero) {
+
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.username = username;
+        dataCadastro = new Date();
+        this.dataNascimento = dataNascimento;
+        this.idtTipo = idtTipo;
+        this.foto = foto;
+        this.genero = genero;
     }
 
     public String getNome() {
@@ -62,5 +68,43 @@ public class User {
         this.username = username;
     }
     
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro() {
+        dataCadastro = new Date();;
+    }
     
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public char getIdtTipo() {
+        return idtTipo;
+    }
+
+    public void setIdtTipo(char idtTipo) {
+        this.idtTipo = idtTipo;
+    }
+
+    public int getFoto() {
+        return foto;
+    }
+
+    public void setFoto(int foto) {
+        this.foto = foto;
+    }
+
+    public int getGenero() {
+        return genero;
+    }
+
+    public void setGenero(int genero) {
+        this.genero = genero;
+    }
 }

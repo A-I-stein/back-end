@@ -109,7 +109,16 @@ public class UserAccessService {
      */
     public static boolean insert(User usuario){
 
-        return SQL.insert(aluguel);
+       String sql = "INSERT INTO Usuario (Username, Nome, Senha, Email, Data_Ca"
+                  + "dastro, Identificador_Tipo, Foto, Genero, Data_Nascimento)"
+                  + " VALUES ('" + usuario.getUsername() + "', '"
+                  + usuario.getNome() + "', '" + usuario.getSenha() + "', '"
+                  + usuario.getEmail() + "', '" + usuario.getDataCadastro()
+                  + "', '" +  usuario.getIdtTipo() + "', " + usuario.getFoto()
+                  + ", " + usuario.getGenero() + ", '"
+                  + usuario.getDataNascimento"');";
+
+        return query(sql) == null;
     }
         
     /**
