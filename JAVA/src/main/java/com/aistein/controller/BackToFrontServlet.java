@@ -5,11 +5,12 @@
  */
 package com.aistein.controller;
 
-import com.aistein.util.SQL;
+import com.aistein.model.service.JogoAcessService;
+import com.aistein.model.table.Jogo;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -33,6 +34,7 @@ public class BackToFrontServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
@@ -45,15 +47,11 @@ public class BackToFrontServlet extends HttpServlet {
          */
         switch (req) {
             case "buscarJogo":            
-            ResultSet teste = null;
-            teste = SQL.query("SELECT * FROM jogos;");
-            while(teste.next()){
-                System.out.println("ID:" + teste.getInt("codJogo"));
-                System.out.println("NOME:" + teste.getString("nomJogo"));
-                System.out.println("URL:" + teste.getString("urlJogo"));
-                resposta = teste.getString("urlJogo");
-            }
-            
+            ArrayList<Jogo> jogo = JogoAcessService.getAllJogo();
+            System.out.println(jogo.toString());
+            resposta = jogo.toString();
+                
+                
             break;
      
             default:
