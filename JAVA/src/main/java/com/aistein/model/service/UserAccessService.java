@@ -14,13 +14,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * Classe Conexão com o User e o BD.
+ * Tem como responsabilidade única servir como conexão entre a classe modelo 
+ * User com o Banco de Dados.
  *
- * @author Gabriel
+ * @author Gabriel Cruz
+ * @version 1.2
  */
-public class UserAccessService {
 
-    //Objetos de manipulação interna.
-    private static ResultSet result;
+public class UserAccessService {
     
     //Constantes que representam os nomes das colunas no DB SQL.
     private static final String ID_USERNAME;
@@ -53,7 +55,7 @@ public class UserAccessService {
      */
     public static boolean isUsernameUsed(String username) {
         
-        ArrayList<User> usuarios = query("SELECT * FROM usuario WHERE Username="
+        ArrayList<User> usuarios = SQL.query("SELECT * FROM usuario WHERE Username="
                                        + username);
         
         if (usuarios == null){
@@ -72,7 +74,7 @@ public class UserAccessService {
      */
     public static User getUserFromUsername(String username) {
         
-        ArrayList<User> usuarios = query("SELECT * FROM usuario WHERE Username="
+        ArrayList<User> usuarios = SQL.query("SELECT * FROM usuario WHERE Username="
                                        + username);
         
         if (isUsernameUsed(username)==false){
@@ -85,11 +87,11 @@ public class UserAccessService {
     
     
     /**
-     * Pesquisa no bd todas os alugueis.
+     * Pesquisa no bd todas os usuarios.
      * @return todos os objetos User em um ArrayList.
      */
     public static ArrayList<User> getAll() {
-        return query("SELECT * FROM usuario");
+        return SQL.query("SELECT * FROM usuario");
     }
     
     /**
@@ -97,9 +99,9 @@ public class UserAccessService {
      * @param username do usuario a ser removido.
      * @return true se a operação for bem sucedida e false se não for.
      */
-    public static boolean delete(int id) {
-        String sql = "DELETE FROM usuario WHERE username = " + id;
-        return query(sql);
+    public static boolean delete(String username) {
+        String stm = "DELETE FROM usuario WHERE username = " + username;
+        return SQL.query(stm);
     }
         
     /**
@@ -109,7 +111,7 @@ public class UserAccessService {
      */
     public static boolean insert(User usuario){
 
-       String sql = "INSERT INTO Usuario (Username, Nome, Senha, Email, Data_Ca"
+       String stm = "INSERT INTO Usuario (Username, Nome, Senha, Email, Data_Ca"
                   + "dastro, Identificador_Tipo, Foto, Genero, Data_Nascimento)"
                   + " VALUES ('" + usuario.getUsername() + "', '"
                   + usuario.getNome() + "', '" + usuario.getSenha() + "', '"
@@ -118,7 +120,7 @@ public class UserAccessService {
                   + ", " + usuario.getGenero() + ", '"
                   + usuario.getDataNascimento"');";
 
-        return query(sql) == null;
+        return SQL.query(stm) == null;
     }
         
     /**
@@ -128,17 +130,13 @@ public class UserAccessService {
      */
     public static boolean update(User usuario){
          
-        String sql = "UPDATE usuario SET (Nome, Identificador_Tipo, Foto, Gener"
+        String stm = "UPDATE usuario SET (Nome, Identificador_Tipo, Foto, Gener"
                    + "o, Data_Nascimento, Senha) = (" +usuario.getNome()+ ", " 
                    +  usuario.getIdtTipo() + ", " + usuario.getFoto() + ", " 
                    + usuario.getGenero() + ", " + usuario.getDataNascimento", " 
                    + usuario.getSenha + ") WHERE username = " 
                    + usuario.getUsername;
 
-        return query(sql) == null;
+        return SQL.query(stm) == null;
     }
-
-    
-    
-    
 }

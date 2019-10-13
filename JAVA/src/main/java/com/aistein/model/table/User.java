@@ -6,11 +6,17 @@
  */
 
 package com.aistein.model.table;
+
 import java.util.Date;
+
 /**
+ * Classe Modelo para um Usuário.
+ * Tem como responsabilidade única servir como modelo para um usuário.
  *
- * @author Arthur
+ * @author Arthur Marcolino, Gabriel Cruz
+ * @version 1.7
  */
+
 public class User {
     private String username;
     private String nome, email, senha;
@@ -18,10 +24,26 @@ public class User {
     private char idtTipo;
     private int foto, genero;
 
+    /**
+     *  Construtor padrão.
+     */
     public User() {
         dataCadastro = new Date();
     }
-
+    
+    /**
+     * Construtor com dados iniciais.
+     * 
+     * @param nome do Usuário.
+     * @param email do Usuário.
+     * @param senha criada pelo Usuário.
+     * @param username único do Usuário.
+     * @param dataNascimento (Data de Nascimento) do Usuário.
+     * @param idtTipo (Identificador do Tipo) do Usuário.
+                      EX: Professor ou Aluno
+     * @param foto fornecida pelo Usuário.
+     * @param genero do Usuário.
+     */
     public User(String nome, String email, String senha, String username, 
                 Date dataNascimento, char idtTipo, int foto, int genero) {
 

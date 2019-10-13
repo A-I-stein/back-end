@@ -1,12 +1,10 @@
 
 package com.aistein.util;
 
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 
 /**
  * Reúne ações básicas para a realização de requisições ao banco de dados.
