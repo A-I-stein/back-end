@@ -71,10 +71,10 @@ public class User {
     public Date getDataCadastro() {
         return dataCadastro;
     }
-
     public void setDataCadastro() {
         dataCadastro = new Date();;
     }
+
     
     public Date getDataNascimento() {
         return dataNascimento;
