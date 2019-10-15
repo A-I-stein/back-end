@@ -24,6 +24,9 @@ import java.util.ArrayList;
 
 public class UserAccessService {
     
+    //Objetos de manipulação interna.
+    private static ResultSet result;
+    
     //Constantes que representam os nomes das colunas no DB SQL.
     private static final String ID_USERNAME;
     private static final String NOME;
@@ -48,15 +51,55 @@ public class UserAccessService {
         GENERO = "Genero";
     }
 
-     /**
+    /**
+     * Pesquisa no bd usando a query recebida.
+     * @param query query a ser executada
+     * @return os objetos User encontrados utilizando a query recebida.
+     */
+    public static ArrayList<User> get(String query){
+        
+        ArrayList<User> usuarios = new ArrayList<>();
+        
+        try{
+            result = SQL.query(query);
+            
+            if(result.next()) {
+                do{
+                    User usuario=new User(
+                            result.getString(NOME), 
+                            result.getString(EMAIL),
+                            result.getString(SENHA),
+                            result.getString(ID_USERNAME), 
+                            null,
+                            result.getString(IDT_TIPO).toCharArray()[0],
+                            result.getInt(FOTO),
+                            result.getInt(GENERO));
+                    
+                    usuario.setDataNascimento(result
+                            .getDate(DATA_NASCIMENTO));
+                    
+                    usuarios.add(usuario);
+                    
+                }while(result.next());
+            }else{
+                System.out.println("Nada encontrado com a query fornecida.");
+            }
+        }catch(SQLException ex) {
+            System.out.println(ex + " at getRowFromId");
+            return null;
+        }
+        return usuarios;
+    }
+    
+    /**
      * Pesquisa no bd se o Username já está cadastrado.
-     * @param Username
+     * @param username
      * @return se o username já está sendo utilizado por outro Usuario.
      */
     public static boolean isUsernameUsed(String username) {
         
-        ArrayList<User> usuarios = SQL.query("SELECT * FROM usuario WHERE Username="
-                                       + username);
+        ArrayList<User> usuarios = get("SELECT * FROM usuario WHERE "
+                                 + ID_USERNAME + "=" + username);
         
         if (usuarios == null){
             System.out.println("Nome está disponivel" + 
@@ -69,13 +112,13 @@ public class UserAccessService {
 
      /**
      * Pesquisa no bd usando o Username do Usuário.
-     * @param Username
+     * @param username
      * @return um objeto Usuario que corresponde ao username recebido.
      */
     public static User getUserFromUsername(String username) {
         
-        ArrayList<User> usuarios = SQL.query("SELECT * FROM usuario WHERE Username="
-                                       + username);
+        ArrayList<User> usuarios = get("SELECT * FROM usuario WHERE "
+                                 + ID_USERNAME + "=" + username);
         
         if (isUsernameUsed(username)==false){
             System.out.println("Nenhum usuário encontrado com esse username" + 
@@ -85,13 +128,12 @@ public class UserAccessService {
         return usuarios.get(0);
     }
     
-    
     /**
      * Pesquisa no bd todas os usuarios.
      * @return todos os objetos User em um ArrayList.
      */
     public static ArrayList<User> getAll() {
-        return SQL.query("SELECT * FROM usuario");
+        return get("SELECT * FROM usuario");
     }
     
     /**
@@ -100,8 +142,9 @@ public class UserAccessService {
      * @return true se a operação for bem sucedida e false se não for.
      */
     public static boolean delete(String username) {
-        String stm = "DELETE FROM usuario WHERE username = " + username;
-        return SQL.query(stm);
+        String stm = "DELETE FROM usuario WHERE " + ID_USERNAME + " = "
+                   + username;
+        return SQL.query(stm) == null;
     }
         
     /**
@@ -111,31 +154,32 @@ public class UserAccessService {
      */
     public static boolean insert(User usuario){
 
-       String stm = "INSERT INTO Usuario (Username, Nome, Senha, Email, Data_Ca"
-                  + "dastro, Identificador_Tipo, Foto, Genero, Data_Nascimento)"
-                  + " VALUES ('" + usuario.getUsername() + "', '"
-                  + usuario.getNome() + "', '" + usuario.getSenha() + "', '"
-                  + usuario.getEmail() + "', '" + usuario.getDataCadastro()
-                  + "', '" +  usuario.getIdtTipo() + "', " + usuario.getFoto()
-                  + ", " + usuario.getGenero() + ", '"
-                  + usuario.getDataNascimento"');";
+        String stm = "INSERT INTO Usuario (" + ID_USERNAME + ", " + NOME + ", "
+                   + EMAIL + ", " + SENHA + ", " + DATA_CADASTRO + ", " 
+                   + IDT_TIPO + ", " + FOTO + ", " + GENERO + ", " 
+                   + DATA_NASCIMENTO + ") VALUES ('" + usuario.getUsername()
+                   + "', '" + usuario.getNome() + "', '" + usuario.getSenha() 
+                   + "', '" + usuario.getEmail() + "', '" 
+                   + usuario.getDataCadastro() + "', '" +  usuario.getIdtTipo() 
+                   + "', " + usuario.getFoto() + ", " + usuario.getGenero() 
+                   + ", '" + usuario.getDataNascimento() + "');" ;
 
         return SQL.query(stm) == null;
     }
         
     /**
      * Atualiza o usuario no bd correspondente ao objeto Usuario recebido
-     * @param user
+     * @param usuario
      * @return true se não houver problemas na operação.
      */
     public static boolean update(User usuario){
          
-        String stm = "UPDATE usuario SET (Nome, Identificador_Tipo, Foto, Gener"
-                   + "o, Data_Nascimento, Senha) = (" +usuario.getNome()+ ", " 
-                   +  usuario.getIdtTipo() + ", " + usuario.getFoto() + ", " 
-                   + usuario.getGenero() + ", " + usuario.getDataNascimento", " 
-                   + usuario.getSenha + ") WHERE username = " 
-                   + usuario.getUsername;
+        String stm = "UPDATE usuario SET (" + NOME + ", " + IDT_TIPO + ", "
+                   + FOTO + ", " + GENERO + ", " + DATA_NASCIMENTO + ", "
+                   + SENHA + ")=("+usuario.getNome()+", " + usuario.getIdtTipo()
+                   + ", " + usuario.getFoto() + ", " +usuario.getGenero() + ", "
+                   + usuario.getDataNascimento() + ", " + usuario.getSenha()+")"
+                   + " WHERE username = "+usuario.getUsername();
 
         return SQL.query(stm) == null;
     }
