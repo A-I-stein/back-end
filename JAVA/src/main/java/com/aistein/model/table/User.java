@@ -59,7 +59,7 @@ public class User {
     }
 
     /**
-     * Metodo que retorna o valor do atributo nome.
+     * Método que retorna o valor do atributo nome.
      * 
      * @return nome do usuario
      */
@@ -68,7 +68,7 @@ public class User {
     }
 
     /**
-     * Metodo que define o valor do atributo nome
+     * Método que define o valor do atributo nome
      * 
      * @param nome
      */
@@ -77,7 +77,7 @@ public class User {
     }
     
     /**
-     * Metodo que retorna o valor do atributo email.
+     * Método que retorna o valor do atributo email.
      * 
      * @return email do usuario
      */
@@ -86,7 +86,7 @@ public class User {
     }
 
     /**
-     * Metodo que define o valor do atributo email
+     * Método que define o valor do atributo email
      * 
      * @param email
      */
@@ -95,7 +95,7 @@ public class User {
     }
     
     /**
-     * Metodo que retorna o valor do atributo senha.
+     * Método que retorna o valor do atributo senha.
      * 
      * @return senha do usuario
      */
@@ -104,7 +104,7 @@ public class User {
     }
 
     /**
-     * Metodo que define o valor do atributo senha
+     * Método que define o valor do atributo senha
      * 
      * @param senha
      */
@@ -113,7 +113,7 @@ public class User {
     }
 
     /**
-     * Metodo que retorna o valor do atributo username.
+     * Método que retorna o valor do atributo username.
      * 
      * @return username do usuario
      */
@@ -122,7 +122,7 @@ public class User {
     }
 
     /**
-     * Metodo que define o valor do atributo username
+     * Método que define o valor do atributo username
      * 
      * @param username
      */
@@ -131,7 +131,7 @@ public class User {
     }    
     
     /**
-     * Metodo que retorna o valor do atributo data de cadastro.
+     * Método que retorna o valor do atributo data de cadastro.
      * 
      * @return dataCadastro (data de cadastro) do usuario
      */
@@ -140,7 +140,7 @@ public class User {
     }
 
     /**
-     * Metodo que define o valor do atributo dataCadastro
+     * Método que define o valor do atributo dataCadastro
      * 
      * @param dataCadastro
      */
@@ -149,7 +149,7 @@ public class User {
     }    
     
     /**
-     * Metodo que retorna o valor do atributo data de nascimento.
+     * Método que retorna o valor do atributo data de nascimento.
      * 
      * @return dataNascimento (data de nascimento) do usuario
      */
@@ -158,7 +158,7 @@ public class User {
     }    
 
     /**
-     * Metodo que define o valor do atributo dataNascimento
+     * Método que define o valor do atributo dataNascimento
      * 
      * @param dataNascimento
      */
@@ -167,7 +167,7 @@ public class User {
     }
     
     /**
-     * Metodo que retorna o valor do atributo identificador de tipo.
+     * Método que retorna o valor do atributo identificador de tipo.
      * 
      * @return idtTipo (identificador de tipo) do usuario
      */
@@ -176,7 +176,7 @@ public class User {
     }
 
     /**
-     * Metodo que define o valor do atributo idtTipo
+     * Método que define o valor do atributo idtTipo
      * 
      * @param idtTipo
      */
@@ -185,7 +185,7 @@ public class User {
     }
     
     /**
-     * Metodo que retorna o valor do atributo foto.
+     * Método que retorna o valor do atributo foto.
      * 
      * @return foto do usuario
      */
@@ -194,7 +194,7 @@ public class User {
     }
 
     /**
-     * Metodo que define o valor do atributo foto
+     * Método que define o valor do atributo foto
      * 
      * @param foto
      */
@@ -203,7 +203,7 @@ public class User {
     }
 
     /**
-     * Metodo que retorna o valor do atributo gênero.
+     * Método que retorna o valor do atributo gênero.
      * 
      * @return gênero do usuario
      */
@@ -212,7 +212,7 @@ public class User {
     }
 
     /**
-     * Metodo que define o valor do atributo genero
+     * Método que define o valor do atributo genero
      * 
      * @param genero
      */

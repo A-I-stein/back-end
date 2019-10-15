@@ -7,7 +7,6 @@
 
 package com.aistein.model.table;
 
-
 /**
  * Classe Modelo para um Gênero.
  * Tem como responsabilidade única servir como modelo para um gênero.
@@ -39,7 +38,7 @@ public class Genero {
     }
     
     /**
-     * Metodo que retorna o valor do atributo codGenero.
+     * Método que retorna o valor do atributo codGenero.
      * 
      * @return codGenero do gênero
      */
@@ -48,7 +47,7 @@ public class Genero {
     }
 
     /**
-     * Metodo que define o valor do atributo codGenero
+     * Método que define o valor do atributo codGenero
      * 
      * @param codGenero
      */
@@ -57,7 +56,7 @@ public class Genero {
     }
 
     /**
-     * Metodo que retorna o valor do atributo nomeGenero.
+     * Método que retorna o valor do atributo nomeGenero.
      * 
      * @return nomeGenero do gênero
      */
@@ -66,7 +65,7 @@ public class Genero {
     }
 
     /**
-     * Metodo que define o valor do atributo nomeGenero
+     * Método que define o valor do atributo nomeGenero
      * 
      * @param nomeGenero
      */

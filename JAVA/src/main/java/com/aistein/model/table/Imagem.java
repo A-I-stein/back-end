@@ -7,7 +7,6 @@
 
 package com.aistein.model.table;
 
-
 /**
  * Classe Modelo para uma Imagem.
  * Tem como responsabilidade única servir como modelo para uma imagem.
@@ -39,7 +38,7 @@ public class Imagem {
     }
     
     /**
-     * Metodo que retorna o valor do atributo codImagem.
+     * Método que retorna o valor do atributo codImagem.
      * 
      * @return codImagem da imagem
      */
@@ -48,7 +47,7 @@ public class Imagem {
     }
 
     /**
-     * Metodo que define o valor do atributo codImagem
+     * Método que define o valor do atributo codImagem
      * 
      * @param codImagem
      */
@@ -57,20 +56,20 @@ public class Imagem {
     }
 
     /**
-     * Metodo que retorna o valor do atributo caminhoImagem.
+     * Método que retorna o valor do atributo caminhoImagem.
      * 
      * @return caminhoImagem da imagem
      */
-    public String getNomeGenero() {
+    public String getCaminhoImagem() {
         return caminhoImagem;
     }
 
     /**
-     * Metodo que define o valor do atributo caminhoImagem
+     * Método que define o valor do atributo caminhoImagem
      * 
      * @param caminhoImagem
      */
-    public void setNomeGenero(String caminhoImagem) {
+    public void setCaminhoImagem(String caminhoImagem) {
         this.caminhoImagem = caminhoImagem;
     }  
 }

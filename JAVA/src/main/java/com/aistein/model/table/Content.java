@@ -64,7 +64,7 @@ public class Content {
     }
     
     /**
-     * Metodo que retorna o valor do atributo codConteudo.
+     * Método que retorna o valor do atributo codConteudo.
      * 
      * @return codConteudo do conteudo
      */
@@ -73,7 +73,7 @@ public class Content {
     }
 
     /**
-     * Metodo que define o valor do atributo codConteudo
+     * Método que define o valor do atributo codConteudo
      * 
      * @param codConteudo
      */
@@ -82,7 +82,7 @@ public class Content {
     }
     
     /**
-     * Metodo que retorna o valor do atributo nomeConteudo.
+     * Método que retorna o valor do atributo nomeConteudo.
      * 
      * @return nomeConteudo do conteudo
      */
@@ -91,7 +91,7 @@ public class Content {
     }
     
     /**
-     * Metodo que define o valor do atributo nomeConteudo
+     * Método que define o valor do atributo nomeConteudo
      * 
      * @param nomeConteudo
      */
@@ -100,7 +100,7 @@ public class Content {
     }
 
     /**
-     * Metodo que retorna o valor do atributo textoConteudo.
+     * Método que retorna o valor do atributo textoConteudo.
      * 
      * @return textoConteudo do conteudo
      */
@@ -109,7 +109,7 @@ public class Content {
     }
 
     /**
-     * Metodo que define o valor do atributo textoConteudo
+     * Método que define o valor do atributo textoConteudo
      * 
      * @param textoConteudo
      */
@@ -118,7 +118,7 @@ public class Content {
     }
 
     /**
-     * Metodo que retorna o valor do atributo statusConteudo.
+     * Método que retorna o valor do atributo statusConteudo.
      * 
      * @return statusConteudo do conteudo
      */
@@ -127,7 +127,7 @@ public class Content {
     }
 
     /**
-     * Metodo que define o valor do atributo statusConteudo
+     * Método que define o valor do atributo statusConteudo
      * 
      * @param statusConteudo
      */
@@ -136,7 +136,7 @@ public class Content {
     }
 
     /**
-     * Metodo que retorna o valor do atributo username.
+     * Método que retorna o valor do atributo username.
      * 
      * @return username do conteudo
      */
@@ -145,7 +145,7 @@ public class Content {
     }
 
     /**
-     * Metodo que define o valor do atributo username
+     * Método que define o valor do atributo username
      * 
      * @param username
      */
@@ -154,7 +154,7 @@ public class Content {
     }
 
     /**
-     * Metodo que retorna o valor do atributo materia.
+     * Método que retorna o valor do atributo materia.
      * 
      * @return materia do conteudo
      */
@@ -163,7 +163,7 @@ public class Content {
     }
 
     /**
-     * Metodo que define o valor do atributo materia
+     * Método que define o valor do atributo materia
      * 
      * @param materia
      */
@@ -172,7 +172,7 @@ public class Content {
     }
 
     /**
-     * Metodo que retorna o valor do atributo dataPublicacao.
+     * Método que retorna o valor do atributo dataPublicacao.
      * 
      * @return dataPublicacao do conteudo
      */
@@ -181,7 +181,7 @@ public class Content {
     }
 
     /**
-     * Metodo que define o valor do atributo dataPublicacao
+     * Método que define o valor do atributo dataPublicacao
      * 
      * @param dataPublicacao
      */
@@ -190,7 +190,7 @@ public class Content {
     }
 
     /**
-     * Metodo que retorna o valor do atributo resumoConteudo.
+     * Método que retorna o valor do atributo resumoConteudo.
      * 
      * @return resumoConteudo do conteudo
      */
@@ -199,7 +199,7 @@ public class Content {
     }
 
     /**
-     * Metodo que define o valor do atributo resumoConteudo
+     * Método que define o valor do atributo resumoConteudo
      * 
      * @param resumoConteudo
      */
@@ -208,7 +208,7 @@ public class Content {
     }
 
     /**
-     * Metodo que retorna o valor do atributo tipoConteudo.
+     * Método que retorna o valor do atributo tipoConteudo.
      * 
      * @return tipoConteudo do conteudo
      */
@@ -217,7 +217,7 @@ public class Content {
     }
 
     /**
-     * Metodo que define o valor do atributo tipoConteudo
+     * Método que define o valor do atributo tipoConteudo
      * 
      * @param tipoConteudo
      */
@@ -226,7 +226,7 @@ public class Content {
     }
 
     /**
-     * Metodo que retorna o valor do atributo fonteConteudo.
+     * Método que retorna o valor do atributo fonteConteudo.
      * 
      * @return fonteConteudo do conteudo
      */
@@ -235,7 +235,7 @@ public class Content {
     }
 
     /**
-     * Metodo que define o valor do atributo fonteConteudo
+     * Método que define o valor do atributo fonteConteudo
      * 
      * @param fonteConteudo
      */
