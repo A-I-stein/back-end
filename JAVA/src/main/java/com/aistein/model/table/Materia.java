@@ -51,7 +51,7 @@ public class Materia{
      * 
      * @param codMateria
      */
-    public void setCodImagem(int codMateria) {
+    public void setCodMateria(int codMateria) {
         this.codMateria = codMateria;
     }
 

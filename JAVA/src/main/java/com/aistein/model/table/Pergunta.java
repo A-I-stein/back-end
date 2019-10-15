@@ -8,35 +8,90 @@
 package com.aistein.model.table;
 
 /**
+ * Classe Modelo para uma Pergunta.
+ * Tem como responsabilidade única servir como modelo para uma pergunta.
  *
- * @author Arthur
+ * @author Arthur Marcolino, Gabriel Cruz
+ * @version 1.2
  */
-public class Pergunta {
-    private String perguntaAberta, perguntaFechada;
 
+public class Pergunta{
+    private int codPergunta, codQuestionario;
+    private String descPergunta;
+
+    /**
+     *  Construtor padrão.
+     */
     public Pergunta() {
     }
+    
+    /**
+     * Construtor com dados iniciais.
+     *
+     * @param codPergunta (Código) único da pergunta.
+     * @param descPergunta (Descrição) da pergunta, ou seja, a pergunta.
+     * @param codQuestionario (Código) do questionário ao qual a pergunta 
+     *                         pertence.
+     */
+    public Pergunta(int codPergunta, String descPergunta, int codQuestionario) {
 
-    public Pergunta(String perguntaAberta, String perguntaFechada) {
-        this.perguntaAberta = perguntaAberta;
-        this.perguntaFechada = perguntaFechada;
-    }
-
-    public String getPerguntaAberta() {
-        return perguntaAberta;
-    }
-
-    public void setPerguntaAberta(String perguntaAberta) {
-        this.perguntaAberta = perguntaAberta;
-    }
-
-    public String getPerguntaFechada() {
-        return perguntaFechada;
-    }
-
-    public void setPerguntaFechada(String perguntaFechada) {
-        this.perguntaFechada = perguntaFechada;
+        this.codPergunta = codPergunta;
+        this.descPergunta = descPergunta;
+        this.codQuestionario = codQuestionario;
     }
     
+    /**
+     * Método que retorna o valor do atributo codPergunta.
+     * 
+     * @return codPergunta da pergunta
+     */
+    public int getCodPergunta() {
+        return codPergunta;
+    }
+
+    /**
+     * Método que define o valor do atributo codPergunta
+     * 
+     * @param codPergunta
+     */
+    public void setCodPergunta(int codPergunta) {
+        this.codPergunta = codPergunta;
+    }
+
+    /**
+     * Método que retorna o valor do atributo descPergunta.
+     * 
+     * @return descPergunta da matéria
+     */
+    public String getDescPergunta() {
+        return descPergunta;
+    }
+
+    /**
+     * Método que define o valor do atributo descPergunta
+     * 
+     * @param descPergunta
+     */
+    public void setDescPergunta(String descPergunta) {
+        this.descPergunta = descPergunta;
+    }  
     
+    /**
+     * Método que retorna o valor do atributo codQuestionario.
+     * 
+     * @return codQuestionario a qual a pergunta pertence
+     */
+    public int getCodQuestionario() {
+        return codQuestionario;
+    }
+
+    /**
+     * Método que define o valor do atributo codQuestionario
+     * 
+     * @param codQuestionario
+     */
+    public void setCodQuestionario(int codQuestionario) {
+        this.codQuestionario = codQuestionario;
+    }
 }
+
