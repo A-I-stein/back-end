@@ -42,7 +42,7 @@ public class Genero {
      * 
      * @return codGenero do gênero
      */
-    public int getCodsGenero() {
+    public int getCodGenero() {
         return codGenero;
     }
 
@@ -51,7 +51,7 @@ public class Genero {
      * 
      * @param codGenero
      */
-    public void setCodsGenero(int codGenero) {
+    public void setCodGenero(int codGenero) {
         this.codGenero = codGenero;
     }
 
