@@ -8,26 +8,68 @@
 package com.aistein.model.table;
 
 /**
+ * Classe Modelo para uma Matéria.
+ * Tem como responsabilidade única servir como modelo para uma matéria.
  *
- * @author Arthur
+ * @author Arthur Marcolino, Gabriel Cruz
+ * @version 1.2
  */
-public class Materia {
-    private String tipoMateria;
 
+public class Materia{
+    private int codMateria;
+    private String nomeMateria;
+
+    /**
+     *  Construtor padrão.
+     */
     public Materia() {
     }
+    
+    /**
+     * Construtor com dados iniciais.
+     *
+     * @param codMateria (Código) único da matéria.
+     * @param nomeMateria (Nome) da matéria.
+     */
+    public Materia(int codMateria, String nomeMateria) {
 
-    public Materia(String tipoMateria) {
-        this.tipoMateria = tipoMateria;
-    }
-
-    public String getTipoMateria() {
-        return tipoMateria;
-    }
-
-    public void setTipoMateria(String tipoMateria) {
-        this.tipoMateria = tipoMateria;
+        this.codMateria = codMateria;
+        this.nomeMateria = nomeMateria;
     }
     
-    
+    /**
+     * Método que retorna o valor do atributo codMateria.
+     * 
+     * @return codMateria da matéria
+     */
+    public int getCodMateria() {
+        return codMateria;
+    }
+
+    /**
+     * Método que define o valor do atributo codMateria
+     * 
+     * @param codMateria
+     */
+    public void setCodImagem(int codMateria) {
+        this.codMateria = codMateria;
+    }
+
+    /**
+     * Método que retorna o valor do atributo nomeMateria.
+     * 
+     * @return nomeMateria da matéria
+     */
+    public String getNomeMateria() {
+        return nomeMateria;
+    }
+
+    /**
+     * Método que define o valor do atributo nomeMateria
+     * 
+     * @param nomeMateria
+     */
+    public void setNomeMateria(String nomeMateria) {
+        this.nomeMateria = nomeMateria;
+    }  
 }
