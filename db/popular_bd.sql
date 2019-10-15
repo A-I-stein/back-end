@@ -25,9 +25,8 @@ INSERT INTO Materia(Codigo_Materia, Nome_Materia)
 		(2,'Trabalho, Energia & Potência'),
 		(3,'Calor & Termodinâmica'),
 		(4,'Mecânica Quântica'),
-		(5,'Som & Ondas'),
-		(6,'Luz & Radiação'),
-		(7,'Electricidade, Magnetismo & Circuitos');
+		(5,'Luz & Radiação'),
+		(6,'Electricidade, Magnetismo & Circuitos');
 
 INSERT INTO Conteudo (Codigo_Conteudo, Nome_Conteudo, Texto_Conteudo, Materia, Resumo_Conteudo, Tipo_Conteudo)
 	VALUES

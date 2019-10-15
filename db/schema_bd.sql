@@ -50,7 +50,7 @@ ALTER TABLE Usuario ADD CONSTRAINT PK_Usuario PRIMARY KEY (Username)
 -- Table Genero
 
 CREATE TABLE Genero(
- Codigo_Genero Serial NOT NULL,
+ Codigo_Genero Integer NOT NULL,
  Nome_Genero Character varying(20) NOT NULL
 )
 WITH (
@@ -65,7 +65,7 @@ ALTER TABLE Genero ADD CONSTRAINT PK_Genero PRIMARY KEY (Codigo_Genero)
 -- Table Imagem
 
 CREATE TABLE Imagem(
- Codigo_Imagem Serial NOT NULL,
+ Codigo_Imagem Integer NOT NULL,
  Caminho_Imagem Character varying NOT NULL
 )
 WITH (
@@ -80,7 +80,7 @@ ALTER TABLE Imagem ADD CONSTRAINT PK_Imagem PRIMARY KEY (Codigo_Imagem)
 -- Table Materia
 
 CREATE TABLE Materia(
- Codigo_Materia Serial NOT NULL,
+ Codigo_Materia Integer NOT NULL,
  Nome_Materia Character varying(30) NOT NULL
 )
 WITH (
@@ -154,7 +154,7 @@ ALTER TABLE Administrador ADD CONSTRAINT PK_Administrador PRIMARY KEY (Username)
 -- Table Conteudo
 
 CREATE TABLE Conteudo(
- Codigo_Conteudo Serial NOT NULL,
+ Codigo_Conteudo Integer NOT NULL,
  Nome_Conteudo Character varying(30) NOT NULL,
  Texto_Conteudo Text NOT NULL,
  Status_Conteudo Character(1),
@@ -200,7 +200,7 @@ ALTER TABLE ImagemAnexaAPublicacao ADD CONSTRAINT PK_ImagemAnexaAPublicacao PRIM
 -- Table Jogo
 
 CREATE TABLE Jogo(
- Codigo_Jogo Serial NOT NULL,
+ Codigo_Jogo Integer NOT NULL,
  Nome_Jogo Character varying NOT NULL,
  URL Character varying NOT NULL,
  Creditos_Jogo Text NOT NULL,
@@ -227,7 +227,7 @@ ALTER TABLE Jogo ADD CONSTRAINT PK_Jogo PRIMARY KEY (Codigo_Jogo)
 -- Table Questionario
 
 CREATE TABLE Questionario(
- Codigo_Questionario Serial NOT NULL,
+ Codigo_Questionario Integer NOT NULL,
  Codigo_Materia Integer
 )
 WITH (
@@ -247,7 +247,7 @@ ALTER TABLE Questionario ADD CONSTRAINT PK_Questionario PRIMARY KEY (Codigo_Ques
 -- Table Pergunta
 
 CREATE TABLE Pergunta(
- Codigo_Pergunta Serial NOT NULL,
+ Codigo_Pergunta Integer NOT NULL,
  Descricao_Pergunta Text NOT NULL,
  Codigo_Questionario Integer NOT NULL
 )
@@ -263,7 +263,7 @@ ALTER TABLE Pergunta ADD CONSTRAINT PK_Pergunta PRIMARY KEY (Codigo_Pergunta,Cod
 -- Table Resposta
 
 CREATE TABLE Resposta(
- Codigo_Resposta Serial NOT NULL,
+ Codigo_Resposta Integer NOT NULL,
  Descricao_Resposta Character varying NOT NULL,
  Codigo_Pergunta Integer NOT NULL,
  Codigo_Questionario Integer NOT NULL
