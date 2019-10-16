@@ -1,3 +1,4 @@
+
 /*
  * Projeto de Integracao - A.I.Stein
  * CEFET-MG 
@@ -7,7 +8,7 @@
 
 package com.aistein.model.service;
 
-import com.aistein.model.table.Gwnero;
+import com.aistein.model.table.Genero;
 import com.aistein.util.SQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
