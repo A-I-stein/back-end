@@ -1,4 +1,3 @@
-
 /*
  * Projeto de Integracao - A.I.Stein
  * CEFET-MG 
@@ -74,7 +73,7 @@ public class GeneroAccessService {
      * @param codGenero
      * @return um objeto Genero que corresponde ao codGenero recebido.
      */
-    public static Content getGeneroFromCodGenero(String codGenero) {
+    public static Content getGeneroFromCodGenero(int codGenero) {
         
         ArrayList<Genero> generos = get("SELECT * FROM genero WHERE"
                                      + CODIGO_GENERO + "=" + codGenero);
@@ -100,7 +99,7 @@ public class GeneroAccessService {
      * @param codGenero do genero a ser removido.
      * @return true se a operação for bem sucedida e false se não for.
      */
-    public static boolean delete(String codGenero) {
+    public static boolean delete(int codGenero) {
         String stm = "DELETE FROM genero WHERE " + CODIGO_GENERO + " = "
                    + codGenero;
         return SQL.query(stm) == null;

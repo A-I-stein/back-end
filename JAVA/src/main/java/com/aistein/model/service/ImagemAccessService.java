@@ -1,4 +1,3 @@
-
 /*
  * Projeto de Integracao - A.I.Stein
  * CEFET-MG 
@@ -74,7 +73,7 @@ public class ImagemAccessService {
      * @param codImagem
      * @return um objeto Imagem que corresponde ao codImagem recebido.
      */
-    public static Content getImagemFromCodImagem(String codImagem) {
+    public static Content getImagemFromCodImagem(int codImagem) {
         
         ArrayList<Imagem> imagens = get("SELECT * FROM imagem WHERE"
                                      + CODIGO_IMAGEM + "=" + codImagem);
@@ -100,7 +99,7 @@ public class ImagemAccessService {
      * @param codImagem do imagem a ser removido.
      * @return true se a operação for bem sucedida e false se não for.
      */
-    public static boolean delete(String codImagem) {
+    public static boolean delete(int codImagem) {
         String stm = "DELETE FROM imagem WHERE " + CODIGO_IMAGEM + " = "
                    + codImagem;
         return SQL.query(stm) == null;
