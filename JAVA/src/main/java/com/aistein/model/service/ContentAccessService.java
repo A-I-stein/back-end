@@ -89,7 +89,7 @@ public class ContentAccessService {
                 System.out.println("Nada encontrado com a query fornecida.");
             }
         }catch(SQLException ex) {
-            System.out.println(ex + " at getRowFromId");
+            System.out.println("Ocorreu o Erro:" + ex);
             return null;
         }
         return conteudos;
