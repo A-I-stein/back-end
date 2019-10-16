@@ -1,3 +1,4 @@
+
 /*
  * Projeto de Integracao - A.I.Stein
  * CEFET-MG 
@@ -7,7 +8,7 @@
 
 package com.aistein.model.service;
 
-import com.aistein.model.table.Gwnero;
+import com.aistein.model.table.Genero;
 import com.aistein.util.SQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -52,7 +53,7 @@ public class GeneroAccessService {
             if(result.next()) {
                 do{
                     Genero genero=new Genero(
-                            result.getString(CODIGO_GENERO), 
+                            result.getInt(CODIGO_GENERO), 
                             result.getString(NOME_GENERO));
                                         
                     generos.add(genero);
@@ -70,8 +71,8 @@ public class GeneroAccessService {
     
     /**
      * Pesquisa no bd usando o Codigo do Gênero.
-     * @param username
-     * @return um objeto Usuario que corresponde ao username recebido.
+     * @param codGenero
+     * @return um objeto Genero que corresponde ao codGenero recebido.
      */
     public static Content getGeneroFromCodGenero(String codGenero) {
         
@@ -126,9 +127,9 @@ public class GeneroAccessService {
      */
     public static boolean update(Genero genero){
          
-        String stm = "UPDATE usuario SET (" + NOME_GENERO + ") = ("
-                   + usuario.getNomeGenero()+")" + " WHERE username = "
-                   + usuario.getUsername();
+        String stm = "UPDATE genero SET (" + NOME_GENERO + ") = ("
+                   + genero.getNomeGenero()+")" + " WHERE" + CODIGO_GENERO
+                   + " = " + genero.getCodGenero();
 
         return SQL.query(stm) == null;
     }
