@@ -9,12 +9,6 @@ Version: 3.0
 Database: PostgreSQL 10
 */
 
-
--- Create schemas section -------------------------------------------------
-
-CREATE SCHEMA Schema1
-;
-
 -- Create tables section -------------------------------------------------
 
 -- Table Usuario
@@ -81,7 +75,7 @@ ALTER TABLE Imagem ADD CONSTRAINT PK_Imagem PRIMARY KEY (Codigo_Imagem)
 
 CREATE TABLE Materia(
  Codigo_Materia Integer NOT NULL,
- Nome_Materia Character varying(30) NOT NULL
+ Nome_Materia Character varying(100) NOT NULL
 )
 WITH (
  autovacuum_enabled=true)
@@ -159,7 +153,7 @@ CREATE TABLE Conteudo(
  Codigo_Conteudo Integer NOT NULL,
  Nome_Conteudo Character varying(30) NOT NULL,
  Texto_Conteudo Text NOT NULL,
- Status_Conteudo Character(1) NOT NULL,
+ Status_Conteudo Character(1),
  Username Character varying(20),
  Materia Integer,
  Data_Publicacao Date,
