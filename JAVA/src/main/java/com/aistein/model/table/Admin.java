@@ -19,7 +19,7 @@ import java.util.Date;
 
 public class Admin extends User{
     
-    private String username, escola;
+    private String escola;
     private int numAprovacoes, diasComoAdmin, materia;
     
     /**
@@ -49,30 +49,11 @@ public class Admin extends User{
                  int numAprovacoes, int diasComoAdmin, int materia) {
         super(nome, email, senha, username, dataNascimento, 'A', foto, genero);
         this.escola = escola;
-        this.username = username;
         this.diasComoAdmin = diasComoAdmin;
         this.numAprovacoes = numAprovacoes;
         this.materia = materia;
     }
     
-  /**
-     * Método que retorna o valor do atributo username.
-     * 
-     * @return username do usuario
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Método que define o valor do atributo username
-     * 
-     * @param username
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     /**
      * Método que retorna o valor do atributo escola.
      * 

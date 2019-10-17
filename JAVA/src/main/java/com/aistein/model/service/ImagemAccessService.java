@@ -73,7 +73,7 @@ public class ImagemAccessService {
      * @param codImagem
      * @return um objeto Imagem que corresponde ao codImagem recebido.
      */
-    public static Content getImagemFromCodImagem(int codImagem) {
+    public static Imagem getImagemFromCodImagem(int codImagem) {
         
         ArrayList<Imagem> imagens = get("SELECT * FROM imagem WHERE"
                                      + CODIGO_IMAGEM + "=" + codImagem);

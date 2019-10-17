@@ -47,24 +47,6 @@ public class Aluno extends User{
         this.username = username;
     }
     
-  /**
-     * Método que retorna o valor do atributo username.
-     * 
-     * @return username do usuario
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Método que define o valor do atributo username
-     * 
-     * @param username
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     /**
      * Método que retorna o valor do atributo escola.
      * 

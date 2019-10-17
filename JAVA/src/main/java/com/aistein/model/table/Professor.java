@@ -87,7 +87,6 @@ public class Professor extends User{
         this.escola = escola;
     }
 
-    /
     /**
      * Método que retorna o valor do atributo materia.
      * 
