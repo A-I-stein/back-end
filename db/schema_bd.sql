@@ -1,11 +1,11 @@
 ﻿/*
 Created: 08/05/2019
-Modified: 09/10/2019
+Modified: 17/10/2019
 Project: A.I.stein
 Model: PostgreSQL 10
 Company: A.I.stein
 Author: Gabriel Cruz
-Version: 2.0
+Version: 3.0
 Database: PostgreSQL 10
 */
 
@@ -24,7 +24,7 @@ CREATE TABLE Usuario(
  Nome Name NOT NULL,
  Senha Character varying(20) DEFAULT 64 NOT NULL,
  Email Character varying(40) NOT NULL,
- Data_Cadastro Date DEFAULT CURRENT_DATE NOT NULL,
+ Data_Cadastro Date NOT NULL,
  Identificador_Tipo Character(1) NOT NULL,
  Foto Integer,
  Genero Integer,
@@ -134,11 +134,13 @@ CREATE TABLE Administrador(
  Username Character varying(20) NOT NULL,
  Escola Character varying(40) NOT NULL,
  Numero_Aprovacoes Integer NOT NULL,
- Tempo_Como_Administrador Time NOT NULL,
+ Dias_Como_Administrador Integer NOT NULL,
  Materia Integer NOT NULL
 )
 WITH (
  autovacuum_enabled=true)
+;
+COMMENT ON COLUMN Administrador.Dias_Como_Administrador IS 'Fazer o calculo da quantidade de dias que o usuário virou administrador e a data atual'
 ;
 
 -- Create indexes for table Administrador
@@ -157,7 +159,7 @@ CREATE TABLE Conteudo(
  Codigo_Conteudo Integer NOT NULL,
  Nome_Conteudo Character varying(30) NOT NULL,
  Texto_Conteudo Text NOT NULL,
- Status_Conteudo Character(1),
+ Status_Conteudo Character(1) NOT NULL,
  Username Character varying(20),
  Materia Integer,
  Data_Publicacao Date,
@@ -182,19 +184,19 @@ CREATE INDEX IX_Relationship16 ON Conteudo (Materia)
 ALTER TABLE Conteudo ADD CONSTRAINT PK_Conteudo PRIMARY KEY (Codigo_Conteudo)
 ;
 
--- Table ImagemAnexaAPublicacao
+-- Table ImagemAnexaAConteudo
 
-CREATE TABLE ImagemAnexaAPublicacao(
+CREATE TABLE ImagemAnexaAConteudo(
  Codigo_Imagem Integer NOT NULL,
- Codigo_conteudo Integer NOT NULL
+ Codigo_Conteudo Integer NOT NULL
 )
 WITH (
  autovacuum_enabled=true)
 ;
 
--- Add keys for table ImagemAnexaAPublicacao
+-- Add keys for table ImagemAnexaAConteudo
 
-ALTER TABLE ImagemAnexaAPublicacao ADD CONSTRAINT PK_ImagemAnexaAPublicacao PRIMARY KEY (Codigo_Imagem,Codigo_conteudo)
+ALTER TABLE ImagemAnexaAConteudo ADD CONSTRAINT PK_ImagemAnexaAConteudo PRIMARY KEY (Codigo_Imagem,Codigo_Conteudo)
 ;
 
 -- Table Jogo
@@ -202,7 +204,7 @@ ALTER TABLE ImagemAnexaAPublicacao ADD CONSTRAINT PK_ImagemAnexaAPublicacao PRIM
 CREATE TABLE Jogo(
  Codigo_Jogo Integer NOT NULL,
  Nome_Jogo Character varying NOT NULL,
- URL Character varying NOT NULL,
+ URL_Jogo Character varying NOT NULL,
  Creditos_Jogo Text NOT NULL,
  Codigo_Imagem Integer NOT NULL,
  Codigo_Materia Integer NOT NULL
@@ -299,10 +301,10 @@ ALTER TABLE Professor ADD CONSTRAINT Relationship8 FOREIGN KEY (Materia) REFEREN
 ALTER TABLE Usuario ADD CONSTRAINT Relationship9 FOREIGN KEY (Foto) REFERENCES Imagem (Codigo_Imagem) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE ImagemAnexaAPublicacao ADD CONSTRAINT Relationship13 FOREIGN KEY (Codigo_Imagem) REFERENCES Imagem (Codigo_Imagem) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE ImagemAnexaAConteudo ADD CONSTRAINT Relationship13 FOREIGN KEY (Codigo_Imagem) REFERENCES Imagem (Codigo_Imagem) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE ImagemAnexaAPublicacao ADD CONSTRAINT Relationship14 FOREIGN KEY (Codigo_conteudo) REFERENCES Conteudo (Codigo_Conteudo) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE ImagemAnexaAConteudo ADD CONSTRAINT Relationship14 FOREIGN KEY (Codigo_Conteudo) REFERENCES Conteudo (Codigo_Conteudo) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 ALTER TABLE Conteudo ADD CONSTRAINT Relationship15 FOREIGN KEY (Username) REFERENCES Usuario (Username) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -320,10 +322,10 @@ ALTER TABLE Jogo ADD CONSTRAINT Relationship18 FOREIGN KEY (Codigo_Materia) REFE
 ALTER TABLE Questionario ADD CONSTRAINT Relationship19 FOREIGN KEY (Codigo_Materia) REFERENCES Materia (Codigo_Materia) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE Resposta ADD CONSTRAINT Relationship22 FOREIGN KEY (Codigo_Pergunta, Codigo_Questionario) REFERENCES Pergunta (Codigo_Pergunta, Codigo_Questionario) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE Pergunta ADD CONSTRAINT Relationship22 FOREIGN KEY (Codigo_Questionario) REFERENCES Questionario (Codigo_Questionario) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE Pergunta ADD CONSTRAINT Relationship23 FOREIGN KEY (Codigo_Questionario) REFERENCES Questionario (Codigo_Questionario) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE Resposta ADD CONSTRAINT Relationship23 FOREIGN KEY (Codigo_Pergunta, Codigo_Questionario) REFERENCES Pergunta (Codigo_Pergunta, Codigo_Questionario) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 
