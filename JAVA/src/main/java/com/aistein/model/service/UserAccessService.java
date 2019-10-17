@@ -99,7 +99,7 @@ public class UserAccessService {
     public static boolean isUsernameUsed(String username) {
         
         ArrayList<User> usuarios = get("SELECT * FROM usuario WHERE "
-                                 + ID_USERNAME + "=" + username);
+                                 + ID_USERNAME + " = '" + username + "'");
         
         if (usuarios == null){
             System.out.println("Nome está disponivel" + 
@@ -118,11 +118,11 @@ public class UserAccessService {
     public static User getUserFromUsername(String username) {
         
         ArrayList<User> usuarios = get("SELECT * FROM usuario WHERE "
-                                 + ID_USERNAME + "=" + username);
+                                 + ID_USERNAME + " = '" + username + "'");
         
         if (isUsernameUsed(username)==false){
             System.out.println("Nenhum usuário encontrado com esse username" + 
-                    username);
+                                username);
             return null;
         }
         return usuarios.get(0);
@@ -142,8 +142,8 @@ public class UserAccessService {
      * @return true se a operação for bem sucedida e false se não for.
      */
     public static boolean delete(String username) {
-        String stm = "DELETE FROM usuario WHERE " + ID_USERNAME + " = "
-                   + username;
+        String stm = "DELETE FROM usuario WHERE " + ID_USERNAME + " = '"
+                   + username + "'";
         return SQL.query(stm) == null;
     }
         
@@ -179,7 +179,7 @@ public class UserAccessService {
                    + SENHA + ")=("+usuario.getNome()+", " + usuario.getIdtTipo()
                    + ", " + usuario.getFoto() + ", " +usuario.getGenero() + ", "
                    + usuario.getDataNascimento() + ", " + usuario.getSenha()+")"
-                   + " WHERE username = "+usuario.getUsername();
+                   + " WHERE username = '" + usuario.getUsername() + "'";
 
         return SQL.query(stm) == null;
     }
