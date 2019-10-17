@@ -73,7 +73,7 @@ public class GeneroAccessService {
      * @param codGenero
      * @return um objeto Genero que corresponde ao codGenero recebido.
      */
-    public static Content getGeneroFromCodGenero(int codGenero) {
+    public static Genero getGeneroFromCodGenero(int codGenero) {
         
         ArrayList<Genero> generos = get("SELECT * FROM genero WHERE"
                                      + CODIGO_GENERO + "=" + codGenero);

@@ -73,7 +73,8 @@ public class QuestionarioAccessService {
      * @param codQuestionario
      * @return um objeto Questionario que corresponde ao codQuestionario recebido.
      */
-    public static Content getQuestionarioFromCodQuestionario(int codQuestionario) {
+    public static Questionario getQuestionarioFromCodQuestionario(int 
+            codQuestionario) {
         
         ArrayList<Questionario> questionarios = get("SELECT * FROM questionario WHERE"
                                      + CODIGO_QUESTIONARIO + "=" + codQuestionario);

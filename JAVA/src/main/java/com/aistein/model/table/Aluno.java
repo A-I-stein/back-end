@@ -19,7 +19,7 @@ import java.util.Date;
 
 public class Aluno extends User{
     
-    private String username, escola;
+    private String escola;
     
     /**
      *  Construtor padrão.
@@ -44,27 +44,8 @@ public class Aluno extends User{
                  Date dataNascimento, int foto, int genero, String escola) {
         super(nome, email, senha, username, dataNascimento, 'E', foto, genero);
         this.escola = escola;
-        this.username = username;
     }
     
-  /**
-     * Método que retorna o valor do atributo username.
-     * 
-     * @return username do usuario
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Método que define o valor do atributo username
-     * 
-     * @param username
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     /**
      * Método que retorna o valor do atributo escola.
      * 
