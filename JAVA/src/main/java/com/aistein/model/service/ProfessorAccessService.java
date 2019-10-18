@@ -150,14 +150,14 @@ public class ProfessorAccessService {
                    + EMAIL + ", " + SENHA + ", " + DATA_CADASTRO + ", " 
                    + IDT_TIPO + ", " + FOTO + ", " + GENERO + ", " 
                    + DATA_NASCIMENTO + ") VALUES ('" + professor.getUsername() 
-                   + "', '" + professor.getNome() + "', '" + professor.getSenha() 
-                   + "', '" +professor.getEmail() + "', '" + professor.getDataCadastro()
-                   + "', '" + professor.getIdtTipo() + "', " + professor.getFoto() 
-                   + ", " +professor.getGenero() + ", '" + professor.getDataNascimento()
-                   + "'); \nINSERT INTO Professor (" + USERNAME + ", " + ESCOLA 
-                   + ", " + MATERIA + ") VALUES ('" + professor.getUsername()
-                   + "', '" + professor.getEscola() + "', "
-                   + professor.getMateria() + ");";
+                   + "', '" + professor.getNome() + "', '" +professor.getSenha() 
+                   + "', '" +professor.getEmail() + "', '" 
+                   + professor.getDataCadastro()+"', '" + professor.getIdtTipo()
+                   + "', " + professor.getFoto() + ", " +professor.getGenero()
+                   + ", '" + professor.getDataNascimento() + "'); \nINSERT INTO"
+                   + " Professor (" + USERNAME + ", " + ESCOLA + ", " + MATERIA
+                   + ") VALUES ('" + professor.getUsername() + "', '" 
+                   + professor.getEscola() +"', "+ professor.getMateria()+ ");";
 
         return SQL.query(stm) == null;
     }

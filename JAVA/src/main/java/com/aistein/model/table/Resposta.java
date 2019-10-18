@@ -35,7 +35,8 @@ public class Resposta{
      * @param codPergunta (Código) do pergunta ao qual a resposta 
      *                         pertence.
      */
-    public Resposta(int codResposta, String descResposta, int codPergunta, int codQuestionario) {
+    public Resposta(int codResposta, String descResposta, int codPergunta, 
+            int codQuestionario) {
 
         this.codResposta = codResposta;
         this.descResposta = descResposta;
