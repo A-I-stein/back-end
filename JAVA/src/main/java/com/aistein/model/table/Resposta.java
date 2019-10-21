@@ -18,6 +18,7 @@ package com.aistein.model.table;
 public class Resposta{
     private int codResposta, codPergunta, codQuestionario;
     private String descResposta;
+    private char respCorreta;
 
     /**
      *  Construtor padrão.
@@ -34,14 +35,16 @@ public class Resposta{
      *                         que a resposta pertence.
      * @param codPergunta (Código) do pergunta ao qual a resposta 
      *                         pertence.
+     * @param respCorreta mostra se a resposta é a correta para a pergunta.
      */
     public Resposta(int codResposta, String descResposta, int codPergunta, 
-            int codQuestionario) {
+            int codQuestionario, boolean respCorreta) {
 
         this.codResposta = codResposta;
         this.descResposta = descResposta;
         this.codPergunta = codPergunta;
         this.codQuestionario = codQuestionario;
+        this.respCorreta = respCorreta;        
     }
     
     /**
@@ -114,5 +117,23 @@ public class Resposta{
      */
     public void setCodPergunta(int codPergunta) {
         this.codPergunta = codPergunta;
+    }
+
+    /**
+     * Método que retorna o valor do atributo respCorreta.
+     * 
+     * @return respCorreta a qual a resposta pertence
+     */
+    public int getRespCorreta() {
+        return respCorreta;
+    }
+
+    /**
+     * Método que define o valor do atributo respCorreta
+     * 
+     * @param respCorreta
+     */
+    public void setRespCorreta(int respCorreta) {
+        this respCorreta = respCorreta;
     }
 }

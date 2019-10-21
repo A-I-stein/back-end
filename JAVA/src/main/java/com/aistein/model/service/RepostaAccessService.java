@@ -32,6 +32,7 @@ public class RepostaAccessService {
     private static final String COD_PERGUNTA;
     private static final String COD_RESPOSTA;
     private static final String DESC_RESPOSTA;
+    private static final String RESP_CORRETA;
     
     //Inicialização das constantes
     static{
@@ -39,6 +40,7 @@ public class RepostaAccessService {
         COD_PERGUNTA = "Codigo_Pergunta";
         COD_RESPOSTA = "Codigo_Resposta";
         DESC_RESPOSTA = "Descricao_Resposta";
+        RESP_CORRETA = "Resposta_Correta";
     }
 
     /**
@@ -59,7 +61,8 @@ public class RepostaAccessService {
                             result.getInt(COD_RESPOSTA), 
                             result.getString(DESC_RESPOSTA),
                             result.getInt(COD_PERGUNTA),
-                            result.getInt(COD_QUESTIONARIO));
+                            result.getInt(COD_QUESTIONARIO),
+                            result.getBoolean(RESP_CORRETA));
                                         
                     respostas.add(resposta);
                     
@@ -128,10 +131,12 @@ public class RepostaAccessService {
     public static boolean insert(Resposta resposta){
 
         String stm = "INSERT INTO resposta (" + COD_QUESTIONARIO + ", " 
-                   + COD_PERGUNTA + ", " + COD_RESPOSTA + ", " + DESC_RESPOSTA
-                   + ") VALUES (" + resposta.getCodQuestionario() + ", " 
+                   + COD_PERGUNTA + ", " + COD_RESPOSTA + ", " + DESC_RESPOSTA 
+                   + ", " + RESP_CORRETA + ") VALUES (" 
+                   + resposta.getCodQuestionario() + ", " 
                    + resposta.getCodPergunta() + ", "+ resposta.getCodResposta()
-                   + ", '" + resposta.getDescResposta() + "');" ;
+                   + ", '" + resposta.getDescResposta() + "', "
+                   + resposta.getRespCorreta() + ");" ;
 
         return SQL.query(stm) == null;
     }
@@ -143,8 +148,9 @@ public class RepostaAccessService {
      */
     public static boolean update(Resposta resposta){
          
-        String stm = "UPDATE resposta SET (" + DESC_RESPOSTA + ") = ("
-                   + resposta.getDescResposta()+")" + " WHERE " + COD_RESPOSTA
+        String stm = "UPDATE resposta SET (" + DESC_RESPOSTA +", "+ RESP_CORRETA
+                   + ") = (" + resposta.getDescResposta() + ", " 
+                   + resposta.getRespCorreta() + ")" + " WHERE " + COD_RESPOSTA
                    + " = " + codResp + "AND" + COD_PERGUNTA + " = " + codPerg
                    + "AND" + COD_QUESTIONARIO + " = " + codQuest;
 

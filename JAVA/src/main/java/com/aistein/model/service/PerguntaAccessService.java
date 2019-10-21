@@ -8,6 +8,7 @@
 package com.aistein.model.service;
 
 import com.aistein.model.table.Pergunta;
+import com.aistein.model.table.Resposta;
 import com.aistein.util.SQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -69,6 +70,35 @@ public class PerguntaAccessService {
             return null;
         }
         return perguntas;
+    }
+    
+    /**
+     * Pesquisa no bd usando a query recebida.
+     * @param query query a ser executada
+     * @return os objetos Pergunta encontrados utilizando a query recebida.
+     */
+    public static int getCodRespCorreta(){
+
+        int codRespCorreta = new Integer();
+
+        try{
+            result = SQL.query("SELECT * FROM resposta WHERE "
+                               + COD_PERGUNTA + " = " + codPerg + "AND"
+                               + COD_QUESTIONARIO + " = " + codQuest + "AND"
+                               + RESP_CORRETA + " = true");
+            
+            if(result.next()) {
+                do{
+                    codRespCorreta = result.getInt(COD_RESPOSTA);
+                }while(result.next());
+            }else{
+                System.out.println("Nada encontrado com a query fornecida.");
+            }
+        }catch(SQLException ex) {
+            System.out.println("Ocorreu o Erro:" + ex);
+            return null;
+        }
+        return codRespCorreta;
     }
     
     /**

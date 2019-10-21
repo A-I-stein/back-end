@@ -52,6 +52,34 @@ INSERT INTO ImagemAnexaAConteudo (Codigo_Imagem, Codigo_conteudo )
 	VALUES
 		(1,0);
 
+INSERT INTO Jogo(Codigo_Jogo, Nome_Jogo, URL_Jogo, Creditos_Jogo, Codigo_Imagem, Codigo_Materia)
+	VALUES
+		(0,'Massas e Molas: Básico', 'https://phet.colorado.edu/sims/html/masses-and-springs-basics/latest/masses-and-springs-basics_en.html', 'Denzell Barnett (developer)
+Amy Rouinfar (lead designer)
+Mike Dubson (original designer)
+Wendy Adams
+Ariel Paul
+Kathy Perkins','https://phet-downloads.colorado.edu/sims/html/masses-and-springs-basics/latest/masses-and-springs-basics-128.png',0);
+		(1,'Massas e Molas', 'https://phet.colorado.edu/sims/html/masses-and-springs/latest/masses-and-springs_en.html', 'Denzell Barnett (developer)
+Matt Pennington (developer)
+Amy Rouinfar (lead designer)
+Mike Dubson (original designer)
+Wendy Adams
+Ariel Paul
+Kathy Perkins','https://phet-downloads.colorado.edu/sims/html/masses-and-springs/latest/masses-and-springs-128.png',0);
+		(2,'Gravidade e Órbitas', 'https://phet.colorado.edu/sims/html/gravity-and-orbits/latest/gravity-and-orbits_pt.html', 'Amy Rouinfar (lead designer)
+Emily Moore (lead designer)
+Noah Podolefsky (lead designer)
+Trish Loeblein
+Ariel Paul
+Kathy Perkins
+Jesse Greenberg (lead developer)
+Sam Reid (lead developer)
+Aaron Davis (developer)
+Jon Olson (developer)','https://phet-downloads.colorado.edu/sims/html/gravity-and-orbits/latest/gravity-and-orbits-128.png',0);
+
+
+
 
 INSERT INTO Questionario(Codigo_Questionario, Codigo_Materia)
 	VALUES
@@ -62,13 +90,13 @@ INSERT INTO Pergunta(Codigo_Pergunta, Descricao_Pergunta, Codigo_Questionario)
 		(0,'Responda com sim o não. Porque o céu é azul?',0), 
 		(1,'Qual das alternativas abaixo representa a melhor letra',0);
 
-INSERT INTO Resposta(Codigo_Resposta, Descricao_Resposta, Codigo_Pergunta, Codigo_Questionario)
+INSERT INTO Resposta(Codigo_Resposta, Descricao_Resposta, Codigo_Pergunta, Codigo_Questionario, Resposta_Correta)
 	VALUES
-		(0,'vermelho',0,0),
-		(1,'amarelo',0,0),
-		(2,'cinza',0,0),
-		(3,'verde',0,0),
-		(0,'a',1,0),
-		(1,'b',1,0),
-		(2,'c',1,0),
-		(3,'d',1,0);
+		(0,'vermelho',0,0,false),
+		(1,'amarelo',0,0,false),
+		(2,'cinza',0,0,true),
+		(3,'verde',0,0,false),
+		(0,'a',1,0,false),
+		(1,'b',1,0,false),
+		(2,'c',1,0,false),
+		(3,'d',1,0,true);
