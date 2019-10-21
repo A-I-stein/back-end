@@ -7,28 +7,29 @@
 
 package com.aistein.model.service;
 
-import com.aistein.model.table.User;
+import com.aistein.model.table.Aluno;
 import com.aistein.util.SQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Classe Conexão com o User e o BD.
+ * Classe Conexão com o Aluno e o BD.
  * Tem como responsabilidade única servir como conexão entre a classe modelo 
- * User com o Banco de Dados.
+ * Aluno com o Banco de Dados.
  *
  * @author Gabriel Cruz
- * @version 1.2
+ * @version 1.0
  */
 
-public class UserAccessService {
+public class AlunoAccessService {
     
     //Objetos de manipulação interna.
     private static ResultSet result;
     
     //Constantes que representam os nomes das colunas no DB SQL.
     private static final String ID_USERNAME;
+    private static final String USERNAME;
     private static final String NOME;
     private static final String EMAIL;
     private static final String SENHA;
@@ -37,10 +38,12 @@ public class UserAccessService {
     private static final String IDT_TIPO;
     private static final String FOTO;
     private static final String GENERO;
+    private static final String ESCOLA;
     
     //Inicialização das constantes
     static{
-        ID_USERNAME = "Username";
+        ID_USERNAME = "B.Username";
+        USERNAME = "Username";
         NOME = "Nome";
         EMAIL = "Email";
         SENHA = "Senha";
@@ -49,36 +52,37 @@ public class UserAccessService {
         IDT_TIPO = "Identificador_Tipo";
         FOTO = "Foto";
         GENERO = "Genero";
+        ESCOLA = "Escola";
     }
-
+    
     /**
      * Pesquisa no bd usando a query recebida.
      * @param query query a ser executada
-     * @return os objetos User encontrados utilizando a query recebida.
+     * @return os objetos Aluno encontrados utilizando a query recebida.
      */
-    public static ArrayList<User> get(String query){
+        public static ArrayList<Aluno> get(String query){
         
-        ArrayList<User> usuarios = new ArrayList<>();
+        ArrayList<Aluno> alunos = new ArrayList<>();
         
         try{
             result = SQL.query(query);
             
             if(result.next()) {
                 do{
-                    User usuario=new User(
+                    Aluno aluno=new Aluno(
+                            result.getString(ID_USERNAME),
                             result.getString(NOME), 
                             result.getString(EMAIL),
-                            result.getString(SENHA),
-                            result.getString(ID_USERNAME), 
+                            result.getString(SENHA), 
                             null,
-                            result.getString(IDT_TIPO).toCharArray()[0],
                             result.getInt(FOTO),
-                            result.getInt(GENERO));
+                            result.getInt(GENERO),
+                            result.getString(ESCOLA));
                     
-                    usuario.setDataNascimento(result
+                    aluno.setDataNascimento(result
                             .getDate(DATA_NASCIMENTO));
                     
-                    usuarios.add(usuario);
+                    alunos.add(aluno);
                     
                 }while(result.next());
             }else{
@@ -88,98 +92,87 @@ public class UserAccessService {
             System.out.println("Ocorreu o Erro:" + ex);
             return null;
         }
-        return usuarios;
+        return alunos;
     }
     
     /**
-     * Pesquisa no bd se o Username já está cadastrado.
+     * Pesquisa no bd usando o Username do Aluno.
      * @param username
-     * @return se o username já está sendo utilizado por outro Usuario.
+     * @return um objeto Aluno que corresponde ao username recebido.
      */
-    public static boolean isUsernameUsed(String username) {
+    public static Aluno getAlunoFromUsername(String username) {
         
-        ArrayList<User> usuarios = get("SELECT * FROM usuario WHERE "
+        ArrayList<Aluno> alunos = get("SELECT * FROM usuario A JOIN aluno B ON"
+                                 + " A.username = B.username WHERE "
                                  + ID_USERNAME + " = '" + username + "'");
         
-        if (usuarios == null){
-            System.out.println("Nome está disponivel" + 
-                    username);
-            return false;
-        }
-        
-        return true;
-    }
-
-     /**
-     * Pesquisa no bd usando o Username do Usuário.
-     * @param username
-     * @return um objeto Usuario que corresponde ao username recebido.
-     */
-    public static User getUserFromUsername(String username) {
-        
-        ArrayList<User> usuarios = get("SELECT * FROM usuario WHERE "
-                                 + ID_USERNAME + " = '" + username + "'");
-        
-        if (isUsernameUsed(username)==false){
+        if (UserAccessService.isUsernameUsed(username)==false){
             System.out.println("Nenhum usuário encontrado com esse username" + 
-                                username);
+                    username);
             return null;
         }
-        return usuarios.get(0);
+        return alunos.get(0);
     }
     
     /**
-     * Pesquisa no bd todas os usuarios.
+     * Pesquisa no bd todas os alunos.
      * @return todos os objetos User em um ArrayList.
      */
-    public static ArrayList<User> getAll() {
-        return get("SELECT * FROM usuario");
+    public static ArrayList<Aluno> getAll() {
+        return get("SELECT * FROM usuario A JOIN aluno B ON A.username "
+                   + "= B.username");
     }
     
     /**
-     * Deleta um usuario do bd usando o username do mesmo.
-     * @param username do usuario a ser removido.
+     * Deleta um aluno e usuário do bd usando o username do mesmo.
+     * @param username do aluno e usuário a ser removido.
      * @return true se a operação for bem sucedida e false se não for.
      */
     public static boolean delete(String username) {
-        String stm = "DELETE FROM usuario WHERE " + ID_USERNAME + " = '"
-                   + username + "'";
+        String stm = "DELETE FROM usuario WHERE " + USERNAME + " = '" 
+                   + username + "';\n DELETE FROM aluno WHERE "
+                   + USERNAME + " = '" + username + "';";
         return SQL.query(stm) == null;
     }
         
     /**
-     * Insere um Usuario no bd
-     * @param usuario
+     * Insere um Usuário e um Aluno no bd
+     * @param aluno
      * @return true se não houver problemas na operação.
      */
-    public static boolean insert(User usuario){
+    public static boolean insert(Aluno aluno){
 
-        String stm = "INSERT INTO Usuario (" + ID_USERNAME + ", " + NOME + ", "
+        String stm = "INSERT INTO Usuario (" + USERNAME + ", " + NOME + ", "
                    + EMAIL + ", " + SENHA + ", " + DATA_CADASTRO + ", " 
                    + IDT_TIPO + ", " + FOTO + ", " + GENERO + ", " 
-                   + DATA_NASCIMENTO + ") VALUES ('" + usuario.getUsername()
-                   + "', '" + usuario.getNome() + "', '" + usuario.getSenha() 
-                   + "', '" + usuario.getEmail() + "', '" 
-                   + usuario.getDataCadastro() + "', '" +  usuario.getIdtTipo() 
-                   + "', " + usuario.getFoto() + ", " + usuario.getGenero() 
-                   + ", '" + usuario.getDataNascimento() + "');" ;
+                   + DATA_NASCIMENTO + ") VALUES ('" + aluno.getUsername() 
+                   + "', '" + aluno.getNome() + "', '" + aluno.getSenha() 
+                   + "', '" +aluno.getEmail() + "', '" + aluno.getDataCadastro()
+                   + "', '" + aluno.getIdtTipo() + "', " + aluno.getFoto() 
+                   + ", " +aluno.getGenero() + ", '" + aluno.getDataNascimento()
+                   + "'); \nINSERT INTO Aluno (" + USERNAME + ", " 
+                   + ESCOLA + ") VALUES ('" +aluno.getUsername()+ "', '"
+                   + aluno.getEscola() + ");";
 
         return SQL.query(stm) == null;
     }
         
     /**
-     * Atualiza o usuario no bd correspondente ao objeto Usuario recebido
-     * @param usuario
+     * Atualiza o usuario e o aluno no bd correspondente ao objeto 
+     * Aluno recebido
+     * @param aluno
      * @return true se não houver problemas na operação.
      */
-    public static boolean update(User usuario){
+    public static boolean update(Aluno aluno){
          
         String stm = "UPDATE usuario SET (" + NOME + ", " + IDT_TIPO + ", "
                    + FOTO + ", " + GENERO + ", " + DATA_NASCIMENTO + ", "
-                   + SENHA + ")=("+usuario.getNome()+", " + usuario.getIdtTipo()
-                   + ", " + usuario.getFoto() + ", " +usuario.getGenero() + ", "
-                   + usuario.getDataNascimento() + ", " + usuario.getSenha()+")"
-                   + " WHERE username = '" + usuario.getUsername() + "'";
+                   + SENHA + ") = ("+aluno.getNome()+", " + aluno.getIdtTipo()
+                   + ", " + aluno.getFoto() + ", " +aluno.getGenero() + ", "
+                   + aluno.getDataNascimento() + ", " + aluno.getSenha()+")"
+                   + " WHERE " + USERNAME + " = '" +aluno.getUsername() + "';\n"
+                   + "UPDATE aluno SET(" + ESCOLA + ") = ('" + aluno.getEscola()
+                   + ")";
 
         return SQL.query(stm) == null;
     }

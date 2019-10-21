@@ -5,10 +5,6 @@
  */
 package com.aistein.util;
 
-import com.aistein.model.table.Id;
-import com.aistein.model.table.Table;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -41,7 +37,7 @@ public final class SQL {
      * Realiza uma simples requisição ao banco de dados.
      * 
      * @param query a string de requisição, que deve estar de acordo com a
-     *              implementação sendo utilizada (MySQL)
+     *              implementação sendo utilizada
      * @return      o conjunto de resutados da requisição
      */
     public static ResultSet query(String query) {
@@ -55,7 +51,7 @@ public final class SQL {
             return null;
         }
         
-    }
+    }   
     
     /**
      * Faz a inserção dos dados de um objeto para a respective tabela.
