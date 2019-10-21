@@ -1,6 +1,6 @@
 /*
  * Projeto de Integracao - A.I.Stein
- * CEFET-MG 
+ * CEFET-MG
  * INF-3A 2019
  * Arthut Marcolino, Gabriel Cruz, Heitor Santos, Italo Nascimento
  */
@@ -33,15 +33,12 @@ public class QuestionarioServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet QuestionarioServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet QuestionarioServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            Questionario questionario = JSON.parse(request.getParameter("questionarioJSON"),
+                    Questionario.class);
+            String resposta = "";
+
+            /*preciso que isso aqui retorne uma pergunta e 4 respostas*/
+
         }
     }
 
