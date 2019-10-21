@@ -17,9 +17,11 @@ import java.util.Date;
  * @version 1.2
  */
 
-public class Aluno extends User{
-    
-    private String username, escola;
+@Table("Aluno")
+public class Aluno extends User {
+    @Id    
+    private String username;
+    private String escola;
     
     /**
      *  Construtor padrão.

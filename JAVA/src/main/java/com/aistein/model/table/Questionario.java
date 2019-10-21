@@ -14,9 +14,11 @@ package com.aistein.model.table;
  * @author Gabriel Cruz
  * @version 1.0
  */
-
+@Table("Questionario")
 public class Questionario {
-    private int codQuestionario, materia;
+    @Id 
+    private int codQuestionario;
+    private int materia;
 
     /**
      *  Construtor padrão.

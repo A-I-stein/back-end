@@ -29,7 +29,7 @@ public class JogoAcessService {
     private static final String CREDJOGO;
     private static final String IMGJOGO;
     private static final String MATJOGO;
-   
+    private static final String TABLE_NAME;
 
 
     //Inicialização das constantes
@@ -40,6 +40,7 @@ public class JogoAcessService {
         CREDJOGO = "creditos_jogo";
         IMGJOGO = "codigo_imagem";
         MATJOGO = "codigo_materia";
+        TABLE_NAME = SQL.getNomeTabela(Jogo.class);
         
     }
     
@@ -62,7 +63,7 @@ public class JogoAcessService {
 
         try {
             
-            result = SQL.query("SELECT * FROM " + "Jogo"
+            result = SQL.query("SELECT * FROM " + TABLE_NAME
                     + " " + condicao);
 
             if (result.next()) {

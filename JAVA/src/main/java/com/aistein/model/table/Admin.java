@@ -17,9 +17,11 @@ import java.util.Date;
  * @version 1.2
  */
 
-public class Admin extends User{
-    
-    private String username, escola;
+@Table("Admin")
+public class Admin extends User {
+    @Id    
+    private String username;
+    private String escola;
     private int numAprovacoes, diasComoAdmin, materia;
     
     /**

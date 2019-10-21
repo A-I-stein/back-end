@@ -14,9 +14,11 @@ package com.aistein.model.table;
  * @author Arthur Marcolino, Gabriel Cruz
  * @version 1.2
  */
-
-public class Resposta{
-    private int codResposta, codPergunta, codQuestionario;
+@Table("Resposta")
+public class Resposta {
+    @Id
+    private int codResposta;
+    private int codPergunta, codQuestionario;
     private String descResposta;
 
     /**
