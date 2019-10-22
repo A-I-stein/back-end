@@ -6,28 +6,44 @@
  */
 
 package com.aistein.model.table;
+
 /**
+ * Classe Modelo para um Jogo.
+ * Tem como responsabilidade única servir como modelo para um jogo.
  *
- * @author Arthur
+ * @author Arthur Marcolino, Gabriel Cruz
+ * @version 1.5
  */
-@Table("Jogo")
+
 public class Jogo {
-    @Id
     private Integer codJogo;
-    private String nomJogo;
+    private String nomeJogo;
     private String urlJogo;
-    private String credJogo;
+    private String creditosJogo;
     private Integer codImgJogo;
     private Integer codMatJogo;
 
+    /**
+     *  Construtor padrão.
+     */
     public Jogo() {
     }
 
-    public Jogo(Integer codJogo, String nomJogo, String urlJogo, String credJogo, Integer codImgJogo, Integer codMatJogo) {
+    /**
+     * Construtor com dados iniciais.
+     * 
+     * @param codJogo (Código) único do Jogo.
+     * @param nomeJogo (Nome) do Jogo.
+     * @param urlJogo (URL) na qual é possivel encontrar o Jogo.
+     * @param creditosJogo nome das Pessoas responsáveis pelo Jogo.
+     * @param codImgJogo Código da Imagem que representa o jogo.
+     * @param codMatJogo Código da Matéria a qual pertence o Jogo.
+     */
+    public Jogo(Integer codJogo, String nomeJogo, String urlJogo, String creditosJogo, Integer codImgJogo, Integer codMatJogo) {
         this.codJogo = codJogo;
-        this.nomJogo = nomJogo;
+        this.nomeJogo = nomeJogo;
         this.urlJogo = urlJogo;
-        this.credJogo = credJogo;
+        this.creditosJogo = creditosJogo;
         this.codImgJogo = codImgJogo;
         this.codMatJogo = codMatJogo;
     }
@@ -40,12 +56,12 @@ public class Jogo {
         this.codJogo = codJogo;
     }
 
-    public String getNomJogo() {
-        return nomJogo;
+    public String getNomeJogo() {
+        return nomeJogo;
     }
 
-    public void setNomJogo(String nomJogo) {
-        this.nomJogo = nomJogo;
+    public void setNomeJogo(String nomeJogo) {
+        this.nomeJogo = nomeJogo;
     }
 
     public String getUrlJogo() {
@@ -56,12 +72,12 @@ public class Jogo {
         this.urlJogo = urlJogo;
     }
 
-    public String getCredJogo() {
-        return credJogo;
+    public String getCreditosJogo() {
+        return creditosJogo;
     }
 
-    public void setCredJogo(String credJogo) {
-        this.credJogo = credJogo;
+    public void setCreditosJogo(String creditosJogo) {
+        this.creditosJogo = creditosJogo;
     }
 
     public Integer getCodImgJogo() {
@@ -79,15 +95,4 @@ public class Jogo {
     public void setCodMatJogo(Integer codMatJogo) {
         this.codMatJogo = codMatJogo;
     }
-
-    @Override
-    public String toString() {
-        return "codJogo=" + codJogo + "\n nomJogo=" + nomJogo + "\n urlJogo=" + urlJogo + "\n credJogo=" + credJogo + "\n codImgJogo=" + codImgJogo + "\n codMatJogo=" + codMatJogo;
-    }
-    
-    
-    
-    
-
-  
 }
