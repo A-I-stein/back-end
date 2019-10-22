@@ -32,12 +32,14 @@ public class PerguntaAccessService {
     private static final String COD_QUESTIONARIO;
     private static final String COD_PERGUNTA;
     private static final String DESC_PERGUNTA;
+    private static final String RESP_CORRETA;
     
     //Inicialização das constantes
     static{
         COD_QUESTIONARIO = "Codigo_Quetionario";
         COD_PERGUNTA = "Codigo_Pergunta";
         DESC_PERGUNTA = "Descricao_Pergunta";
+        RESP_CORRETA = "Resposta_Correta";
     }
 
     /**
@@ -73,9 +75,38 @@ public class PerguntaAccessService {
     }
     
     /**
-     * Pesquisa no bd usando a query recebida.
-     * @param query query a ser executada
-     * @return os objetos Pergunta encontrados utilizando a query recebida.
+     * Retorna os códigos das Alternativas.
+     * @return os codigos de alternativos encontrados utilizando a query.
+     */
+    public static ArrayList<Integer> getCodsAlternativas(){
+        
+        ArrayList<Integer> alternativas = new ArrayList<>();
+        
+        try{
+            result = SQL.query("SELECT * FROM resposta WHERE "
+                               + COD_PERGUNTA + " = " + codPerg + "AND"
+                               + COD_QUESTIONARIO + " = " + codQuest);
+            
+            if(result.next()) {
+                do{
+                    int alternativa = result.getInt("Codigo_Resposta");
+                                        
+                    alternativas.add(alternativa);
+                    
+                }while(result.next());
+            }else{
+                System.out.println("Nada encontrado com a query fornecida.");
+            }
+        }catch(SQLException ex) {
+            System.out.println("Ocorreu o Erro:" + ex);
+            return null;
+        }
+        return alternativas;
+    }
+
+    /**
+     * Retorna o código da resposta correta.
+     * @return um int que contem o código da resposta correta.
      */
     public static int getCodRespCorreta(){
 
@@ -89,7 +120,7 @@ public class PerguntaAccessService {
             
             if(result.next()) {
                 do{
-                    codRespCorreta = result.getInt(COD_RESPOSTA);
+                    codRespCorreta = result.getInt("Codigo_Resposta");
                 }while(result.next());
             }else{
                 System.out.println("Nada encontrado com a query fornecida.");
