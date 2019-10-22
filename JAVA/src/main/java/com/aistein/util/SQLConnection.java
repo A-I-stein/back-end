@@ -10,8 +10,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
- * @author Arthur
+ * Classe que possui os dados que permitem a conexão com o Banco de Dados.
+ * 
+ * @author Arthur Marcolino
+ * @version 1.1
  */
 public class SQLConnection {
     

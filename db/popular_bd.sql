@@ -11,8 +11,16 @@ INSERT INTO Imagem (Codigo_Imagem, Caminho_Imagem)
 		(0,'https://pbs.twimg.com/profile_images/949787136030539782/LnRrYf6e.jpg'),
 		(1,'https://ichef.bbci.co.uk/news/660/cpsprodpb/13F00/production/_95146618_bills.jpg'),
 		(2,'http://www.apimages.com/Images/Ap_Creative_Stock_Header.jpg'),
-		(3,'https://edit.co.uk/uploads/2016/12/Image-1-Alternatives-to-stock-photography-Thinkstock.jpg'),
-		(4,'https://static.boredpanda.com/blog/wp-content/uploads/2018/05/emilia-clarke-making-stock-photos-5-5b0801c7504b2__700.jpg');
+	
+	(3,'https://edit.co.uk/uploads/2016/12/Image-1-Alternatives-to-stock-photography-Thinkstock.jpg'),
+	
+	(4,'https://static.boredpanda.com/blog/wp-content/uploads/2018/05/emilia-clarke-making-stock-photos-5-5b0801c7504b2__700.jpg'),
+	
+	(5,'https://phet-downloads.colorado.edu/sims/html/masses-and-springs-basics/latest/masses-and-springs-basics-128.png'),
+	
+	(6,'https://phet-downloads.colorado.edu/sims/html/masses-and-springs/latest/masses-and-springs-128.png'),
+	
+	(7,'https://phet-downloads.colorado.edu/sims/html/gravity-and-orbits/latest/gravity-and-orbits-128.png');
 
 INSERT INTO Materia(Codigo_Materia, Nome_Materia)
 	VALUES
@@ -59,14 +67,14 @@ Amy Rouinfar (lead designer)
 Mike Dubson (original designer)
 Wendy Adams
 Ariel Paul
-Kathy Perkins','https://phet-downloads.colorado.edu/sims/html/masses-and-springs-basics/latest/masses-and-springs-basics-128.png',0);
+Kathy Perkins',5,0);
 		(1,'Massas e Molas', 'https://phet.colorado.edu/sims/html/masses-and-springs/latest/masses-and-springs_en.html', 'Denzell Barnett (developer)
 Matt Pennington (developer)
 Amy Rouinfar (lead designer)
 Mike Dubson (original designer)
 Wendy Adams
 Ariel Paul
-Kathy Perkins','https://phet-downloads.colorado.edu/sims/html/masses-and-springs/latest/masses-and-springs-128.png',0);
+Kathy Perkins',6,0);
 		(2,'Gravidade e Órbitas', 'https://phet.colorado.edu/sims/html/gravity-and-orbits/latest/gravity-and-orbits_pt.html', 'Amy Rouinfar (lead designer)
 Emily Moore (lead designer)
 Noah Podolefsky (lead designer)
@@ -76,7 +84,7 @@ Kathy Perkins
 Jesse Greenberg (lead developer)
 Sam Reid (lead developer)
 Aaron Davis (developer)
-Jon Olson (developer)','https://phet-downloads.colorado.edu/sims/html/gravity-and-orbits/latest/gravity-and-orbits-128.png',0);
+Jon Olson (developer)',7,0);
 
 
 
