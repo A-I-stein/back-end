@@ -16,9 +16,9 @@ import java.util.Date;
  * @author Arthur Marcolino, Gabriel Cruz
  * @version 1.8
  */
-@Table("User")
+
 public class User {
-    @Id
+    
     private String username;
     private String nome, email, senha;
     private Date dataCadastro, dataNascimento;

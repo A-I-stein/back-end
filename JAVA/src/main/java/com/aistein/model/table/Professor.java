@@ -16,9 +16,9 @@ import java.util.Date;
  * @author Arthur Marcolino, Gabriel Cruz
  * @version 1.2
  */
-@Table("Professor")
+
 public class Professor extends User{
-    @Id    
+
     private String username;
     private String escola;
     private int materia;

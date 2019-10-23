@@ -56,12 +56,8 @@
         <servlet-class>com.aistein.controller.RespostaServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>User</servlet-name>
+        <servlet-name>UserServlet</servlet-name>
         <servlet-class>com.aistein.controller.UserServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AdminAcessService</servlet-name>
-        <servlet-class>com.aistein.model.service.AdminAcessService</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>JogoServlet</servlet-name>
@@ -108,12 +104,8 @@
         <url-pattern>/RespostaServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>User</servlet-name>
-        <url-pattern>/User</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdminAcessService</servlet-name>
-        <url-pattern>/AdminAcessService</url-pattern>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/UserServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

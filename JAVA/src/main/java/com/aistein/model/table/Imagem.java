@@ -14,9 +14,9 @@ package com.aistein.model.table;
  * @author Gabriel Cruz
  * @version 1.0
  */
-@Table("Imagem")
+
 public class Imagem{
-    @Id
+
     private int codImagem;
     private String caminhoImagem;
 

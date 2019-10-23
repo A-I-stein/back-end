@@ -17,9 +17,7 @@ import java.util.Date;
  * @version 1.2
  */
 
-@Table("Aluno")
 public class Aluno extends User {
-    @Id    
     private String username;
     private String escola;
     

@@ -17,9 +17,9 @@ import java.util.Date;
  * @version 1.7
  */
 
-@Table("Conteudo")
+
 public class Conteudo {
-    @Id
+
     private int codConteudo;
     private int  materia;
     private String nomeConteudo, username, textoConteudo, resumoConteudo, 

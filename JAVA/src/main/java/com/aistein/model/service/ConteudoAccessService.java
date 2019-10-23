@@ -9,7 +9,7 @@ package com.aistein.model.service;
 
 import com.aistein.util.SQL;
 import java.util.ArrayList;
-import com.aistein.model.table.Content;
+import com.aistein.model.table.Conteudo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -22,7 +22,7 @@ import java.sql.SQLException;
  * @version 1.2
  */
 
-public class ContentAccessService {
+public class ConteudoAccessService {
     
     //Objetos de manipulação interna.
     private static ResultSet result;
@@ -58,16 +58,16 @@ public class ContentAccessService {
      * @param query query a ser executada
      * @return os objetos Content encontrados utilizando a query recebida.
      */
-    public static ArrayList<Content> get(String query){
+    public static ArrayList<Conteudo> get(String query){
         
-        ArrayList<Content> conteudos = new ArrayList<>();
+        ArrayList<Conteudo> conteudos = new ArrayList<>();
         
         try{
             result = SQL.query(query);
             
             if(result.next()) {
                 do{
-                    Content conteudo=new Content(
+                    Conteudo conteudo=new Conteudo(
                             result.getInt(COD_CONTEUDO), 
                             result.getString(NOME_CONTEUDO),
                             result.getString(TEXTO_CONTEUDO),
@@ -100,9 +100,9 @@ public class ContentAccessService {
      * @param codConteudo
      * @return um objeto Content que corresponde ao codigo recebido.
      */
-    public static Content getConteudoFromCodConteudo(String codConteudo) {
+    public static Conteudo getConteudoFromCodConteudo(String codConteudo) {
         
-        ArrayList<Content> conteudos = get("SELECT * FROM conteudo WHERE"
+        ArrayList<Conteudo> conteudos = get("SELECT * FROM conteudo WHERE"
                                      + COD_CONTEUDO + "=" + codConteudo);
         
         if (conteudos==null){
@@ -117,7 +117,7 @@ public class ContentAccessService {
      * Pesquisa no bd todas os conteudos.
      * @return todos os objetos Content em um ArrayList.
      */
-    public static ArrayList<Content> getAll() {
+    public static ArrayList<Conteudo> getAll() {
         return get("SELECT * FROM conteudo");
     }
     
@@ -137,7 +137,7 @@ public class ContentAccessService {
      * @param conteudo
      * @return true se não houver problemas na operação.
      */
-    public static boolean insert(Content conteudo){
+    public static boolean insert(Conteudo conteudo){
   
         String stm = "INSERT INTO Conteudo (" + COD_CONTEUDO + ", " 
                    + NOME_CONTEUDO + ", " + TEXTO_CONTEUDO + ", " 
@@ -161,7 +161,7 @@ public class ContentAccessService {
      * @param conteudo
      * @return true se não houver problemas na operação.
      */
-    public static boolean update(Content conteudo){
+    public static boolean update(Conteudo conteudo){
         
         String stm = "UPDATE Conteudo SET (" + NOME_CONTEUDO + ", " 
                    + TEXTO_CONTEUDO + ", " + STATUS_CONTEUDO + ", "  + MATERIA 

@@ -14,9 +14,9 @@ package com.aistein.model.table;
  * @author Arthur Marcolino, Gabriel Cruz
  * @version 1.2
  */
- @Table("Materia")
+ 
  public class Materia {
-    @Id
+ 
     private int codMateria;
     private String nomeMateria;
 

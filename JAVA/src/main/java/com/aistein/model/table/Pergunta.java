@@ -14,9 +14,9 @@ package com.aistein.model.table;
  * @author Arthur Marcolino, Gabriel Cruz
  * @version 1.2
  */
- @Table("Pergunta")
+ 
  public class Pergunta {
-    @Id
+    
     private int codPergunta;
     private int codQuestionario;
     private String descPergunta;

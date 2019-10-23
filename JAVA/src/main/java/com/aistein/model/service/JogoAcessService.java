@@ -68,11 +68,11 @@ public class JogoAcessService {
                     Jogo jogo = new Jogo();
                     jogo.setCodJogo(Integer.parseInt(
                             result.getString(CODJOGO)));
-                    jogo.setNomJogo(
+                    jogo.setNomeJogo(
                             result.getString(NOMEJOGO));
                     jogo.setUrlJogo(
                             result.getString(URLJOGO));
-                    jogo.setCredJogo(
+                    jogo.setCreditosJogo(
                             result.getString(CREDJOGO));
                     jogo.setCodImgJogo(Integer.parseInt(
                             result.getString(IMGJOGO)));

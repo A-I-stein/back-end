@@ -14,9 +14,9 @@ package com.aistein.model.table;
  * @author Arthur Marcolino, Gabriel Cruz
  * @version 1.2
  */
-@Table("Resposta")
+
 public class Resposta {
-    @Id
+    
     private int codResposta;
     private int codPergunta, codQuestionario;
     private String descResposta;
@@ -40,7 +40,7 @@ public class Resposta {
      * @param respCorreta mostra se a resposta é a correta para a pergunta.
      */
     public Resposta(int codResposta, String descResposta, int codPergunta, 
-            int codQuestionario, boolean respCorreta) {
+            int codQuestionario, char respCorreta) {
 
         this.codResposta = codResposta;
         this.descResposta = descResposta;
@@ -135,7 +135,7 @@ public class Resposta {
      * 
      * @param respCorreta
      */
-    public void setRespCorreta(int respCorreta) {
-        this respCorreta = respCorreta;
+    public void setRespCorreta(char respCorreta) {
+        this.respCorreta = respCorreta;
     }
 }

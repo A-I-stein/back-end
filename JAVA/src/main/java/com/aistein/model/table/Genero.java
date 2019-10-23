@@ -15,9 +15,9 @@ package com.aistein.model.table;
  * @version 1.0
  */
 
-@Table("Genero")
+
 public class Genero {
-    @Id
+
     private int codGenero;
     private String nomeGenero;
 
