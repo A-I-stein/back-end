@@ -1,6 +1,6 @@
 ﻿/*
 Created: 08/05/2019
-Modified: 21/10/2019
+Modified: 24/10/2019
 Project: A.I.stein
 Model: PostgreSQL 10
 Company: A.I.stein
@@ -10,136 +10,42 @@ Database: PostgreSQL 10
 */
 
 
--- Drop relationships section -------------------------------------------------
-
-ALTER TABLE Resposta DROP CONSTRAINT IF EXISTS Relationship23
-;
-ALTER TABLE Pergunta DROP CONSTRAINT IF EXISTS Relationship22
-;
-ALTER TABLE Questionario DROP CONSTRAINT IF EXISTS Relationship19
-;
-ALTER TABLE Jogo DROP CONSTRAINT IF EXISTS Relationship18
-;
-ALTER TABLE Jogo DROP CONSTRAINT IF EXISTS Relationship17
-;
-ALTER TABLE Conteudo DROP CONSTRAINT IF EXISTS Relationship16
-;
-ALTER TABLE Conteudo DROP CONSTRAINT IF EXISTS Relationship15
-;
-ALTER TABLE ImagemAnexaAConteudo DROP CONSTRAINT IF EXISTS Relationship14
-;
-ALTER TABLE ImagemAnexaAConteudo DROP CONSTRAINT IF EXISTS Relationship13
-;
-ALTER TABLE Usuario DROP CONSTRAINT IF EXISTS Relationship9
-;
-ALTER TABLE Professor DROP CONSTRAINT IF EXISTS Relationship8
-;
-ALTER TABLE Administrador DROP CONSTRAINT IF EXISTS Relationship7
-;
-ALTER TABLE Administrador DROP CONSTRAINT IF EXISTS Relationship6
-;
-ALTER TABLE Professor DROP CONSTRAINT IF EXISTS Relationship5
-;
-ALTER TABLE Aluno DROP CONSTRAINT IF EXISTS Relationship4
-;
-ALTER TABLE Usuario DROP CONSTRAINT IF EXISTS Relationship1
-;
-
-
-
-
--- Drop keys for tables section -------------------------------------------------
-
-ALTER TABLE Resposta DROP CONSTRAINT IF EXISTS PK_Resposta
-;
-ALTER TABLE Pergunta DROP CONSTRAINT IF EXISTS PK_Pergunta
-;
-ALTER TABLE Questionario DROP CONSTRAINT IF EXISTS PK_Questionario
-;
-ALTER TABLE Jogo DROP CONSTRAINT IF EXISTS PK_Jogo
-;
-ALTER TABLE ImagemAnexaAConteudo DROP CONSTRAINT IF EXISTS PK_ImagemAnexaAConteudo
-;
-ALTER TABLE Conteudo DROP CONSTRAINT IF EXISTS PK_Conteudo
-;
-ALTER TABLE Administrador DROP CONSTRAINT IF EXISTS PK_Administrador
-;
-ALTER TABLE Professor DROP CONSTRAINT IF EXISTS PK_Professor
-;
-ALTER TABLE Aluno DROP CONSTRAINT IF EXISTS PK_Aluno
-;
-ALTER TABLE Materia DROP CONSTRAINT IF EXISTS PK_Materia
-;
-ALTER TABLE Imagem DROP CONSTRAINT IF EXISTS PK_Imagem
-;
-ALTER TABLE Genero DROP CONSTRAINT IF EXISTS PK_Genero
-;
-ALTER TABLE Usuario DROP CONSTRAINT IF EXISTS PK_Usuario
-;
-
-
--- Drop indexes section -------------------------------------------------
-
-DROP INDEX IF EXISTS IX_Relationship19
-;
-DROP INDEX IF EXISTS IX_Relationship17
-;
-DROP INDEX IF EXISTS IX_Relationship18
-;
-DROP INDEX IF EXISTS IX_Relationship15
-;
-DROP INDEX IF EXISTS IX_Relationship16
-;
-DROP INDEX IF EXISTS IX_Relationship7
-;
-DROP INDEX IF EXISTS IX_Relationship8
-;
-DROP INDEX IF EXISTS IX_Relationship1
-;
-DROP INDEX IF EXISTS IX_Relationship9
-;
-
-
--- Drop tables section ---------------------------------------------------
-
-DROP TABLE IF EXISTS Resposta
-;
-DROP TABLE IF EXISTS Pergunta
-;
-DROP TABLE IF EXISTS Questionario
-;
-DROP TABLE IF EXISTS Jogo
-;
-DROP TABLE IF EXISTS ImagemAnexaAConteudo
-;
-DROP TABLE IF EXISTS Conteudo
-;
-DROP TABLE IF EXISTS Administrador
-;
-DROP TABLE IF EXISTS Professor
-;
-DROP TABLE IF EXISTS Aluno
-;
-DROP TABLE IF EXISTS Usuario
-;
-DROP TABLE IF EXISTS Materia
-;
-DROP TABLE IF EXISTS Imagem
-;
-DROP TABLE IF EXISTS Genero
-;
-
--- Drop schemas section --------------------------------------------------- 
-
-DROP SCHEMA IF EXISTS Schema1
-;
-
 -- Create schemas section -------------------------------------------------
 
 CREATE SCHEMA Schema1
 ;
 
 -- Create tables section -------------------------------------------------
+
+-- Table Usuario
+
+CREATE TABLE Usuario(
+ Username Character varying(20) NOT NULL,
+ Nome Name NOT NULL,
+ Senha Character varying(20) DEFAULT 64 NOT NULL,
+ Email Character varying(40) NOT NULL,
+ Data_Cadastro Date NOT NULL,
+ Identificador_Tipo Character(1) NOT NULL,
+ Foto Integer,
+ Genero Integer,
+ Data_Nascimento Date
+)
+WITH (
+ autovacuum_enabled=true)
+;
+
+-- Create indexes for table Usuario
+
+CREATE INDEX IX_Relationship1 ON Usuario (Genero)
+;
+
+CREATE INDEX IX_Relationship9 ON Usuario (Foto)
+;
+
+-- Add keys for table Usuario
+
+ALTER TABLE Usuario ADD CONSTRAINT PK_Usuario PRIMARY KEY (Username)
+;
 
 -- Table Genero
 
@@ -184,36 +90,6 @@ WITH (
 -- Add keys for table Materia
 
 ALTER TABLE Materia ADD CONSTRAINT PK_Materia PRIMARY KEY (Codigo_Materia)
-;
-
--- Table Usuario
-
-CREATE TABLE Usuario(
- Username Character varying(20) NOT NULL,
- Nome Name NOT NULL,
- Senha Character varying(20) DEFAULT 64 NOT NULL,
- Email Character varying(40) NOT NULL,
- Data_Cadastro Date NOT NULL,
- Identificador_Tipo Character(1) NOT NULL,
- Foto Integer,
- Genero Integer,
- Data_Nascimento Date
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Create indexes for table Usuario
-
-CREATE INDEX IX_Relationship1 ON Usuario (Genero)
-;
-
-CREATE INDEX IX_Relationship9 ON Usuario (Foto)
-;
-
--- Add keys for table Usuario
-
-ALTER TABLE Usuario ADD CONSTRAINT PK_Usuario PRIMARY KEY (Username)
 ;
 
 -- Table Aluno

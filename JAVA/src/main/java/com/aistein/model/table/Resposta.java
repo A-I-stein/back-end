@@ -20,7 +20,7 @@ public class Resposta {
     private int codResposta;
     private int codPergunta, codQuestionario;
     private String descResposta;
-    private char respCorreta;
+    private boolean respCorreta;
 
     /**
      *  Construtor padrão.
@@ -40,7 +40,7 @@ public class Resposta {
      * @param respCorreta mostra se a resposta é a correta para a pergunta.
      */
     public Resposta(int codResposta, String descResposta, int codPergunta, 
-            int codQuestionario, char respCorreta) {
+            int codQuestionario, boolean respCorreta) {
 
         this.codResposta = codResposta;
         this.descResposta = descResposta;
@@ -126,7 +126,7 @@ public class Resposta {
      * 
      * @return respCorreta a qual a resposta pertence
      */
-    public int getRespCorreta() {
+    public boolean getRespCorreta() {
         return respCorreta;
     }
 
@@ -135,7 +135,7 @@ public class Resposta {
      * 
      * @param respCorreta
      */
-    public void setRespCorreta(char respCorreta) {
+    public void setRespCorreta(boolean respCorreta) {
         this.respCorreta = respCorreta;
     }
 }
