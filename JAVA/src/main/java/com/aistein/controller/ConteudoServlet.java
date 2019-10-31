@@ -1,6 +1,6 @@
 /*
  * Projeto de Integracao - A.I.Stein
- * CEFET-MG 
+ * CEFET-MG
  * INF-3A 2019
  * Arthut Marcolino, Gabriel Cruz, Heitor Santos, Italo Nascimento
  */
@@ -30,18 +30,29 @@ public class ConteudoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        Conteudo frontConteudo = JSON.parse(request.getParameter("tipo"),
+                    Patrimonio.class);
+        String resposta = "";
+        String req = request.getParameter("req");
+        String tipo = request.getParameter("tipo");
+        Boolean res = false;
+
+
+        switch (req) {
+            case "all":
+              ArrayList<Conteudo> conteudo = ConteudoAcessService.getAll();
+              System.out.println(conteudo.toString());
+                resposta = conteudo.toString();
+            break;
+            case "especifico":
+              Conteudo conteudo = ConteudoAcessService.getConteudoFromNomConteudo(frontConteudo);
+              System.out.println(conteudo.toString());
+                resposta = conteudo.toString();
+            break;
+            default:
+        }
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ConteudoServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ConteudoServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.println(resposta);
         }
     }
 

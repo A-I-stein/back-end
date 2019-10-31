@@ -53,34 +53,6 @@ public class BackToFrontServlet extends HttpServlet {
 
 
             break;
-            /* alguem testa isso aqui
-            
-            case "buscarQuestionario":
-            String respostaPergunta = '';
-            ArrayList<Cod_Perguntas> Cod_perguntas =
-              questionarioAcessService.getAllPerguntas(tipo);
-            ArrayList<Descricao_Resposta> respostas;
-
-              //tipo = cod_questionario/Materia
-              for (  ArrayList<Cod_Perguntas> Cod_perguntas : cod_pergunta ) {
-                //pega a descrição da pergunta
-                respostaPergunta =
-                respostaPergunta.concat
-                (questionarioAcessService.getDescPergunta(tipo,cod_pergunta));
-                //separa a pergunta das respostas apartir de '|'
-                respostaPergunta =
-                respostaPergunta.concat('|');
-                //pega as respostas da pergunta obtida
-                respostaPergunta =
-                respostaPergunta.concat
-                (questionarioAcessService.getAllRespostas(tipo,cod_pergunta));
-                //separa o conjunto anterior a partir de '|'
-                respostaPergunta =
-                respostaPergunta.concat('||');
-              }
-              //supondo que tudo retorne uma string
-              resposta = respostaPergunta;
-              */
 
             default:
         }
