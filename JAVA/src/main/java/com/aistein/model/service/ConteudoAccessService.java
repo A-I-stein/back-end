@@ -114,6 +114,25 @@ public class ConteudoAccessService {
     }
     
     /**
+     * Pesquisa no bd usando o codigo do Conteudo.
+     * @param content
+     * @return um objeto Content que corresponde ao codigo recebido.
+     */
+    public static ArrayList<Conteudo> getConteudoFromNome(Conteudo content) {
+        String nome = content.getNomeConteudo
+        
+        ArrayList<Conteudo> conteudos = get("SELECT * FROM conteudo WHERE"
+                                     + NOME_CONTEUDO + "=" + nome);
+        
+        if (conteudos==null){
+            System.out.println("Nenhum Conteudo encontrado com esse Nome" + 
+                    codConteudo);
+            return null;
+        }
+        return conteudos;
+    }
+    
+    /**
      * Pesquisa no bd todas os conteudos.
      * @return todos os objetos Content em um ArrayList.
      */
