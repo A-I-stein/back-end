@@ -95,4 +95,10 @@ public class Jogo {
     public void setCodMatJogo(Integer codMatJogo) {
         this.codMatJogo = codMatJogo;
     }
+
+    @Override
+    public String toString() {
+        return "Jogo{" + "codJogo=" + codJogo + ", nomeJogo=" + nomeJogo + ", urlJogo=" + urlJogo + ", creditosJogo=" + creditosJogo + ", codImgJogo=" + codImgJogo + ", codMatJogo=" + codMatJogo + '}';
+    }
+    
 }

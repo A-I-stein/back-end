@@ -35,7 +35,7 @@ public class JogoAcessService {
     static{
         CODJOGO = "codigo_jogo";
         NOMEJOGO = "nome_jogo";
-        URLJOGO = "url";
+        URLJOGO = "url_jogo";
         CREDJOGO = "creditos_jogo";
         IMGJOGO = "codigo_imagem";
         MATJOGO = "codigo_materia";

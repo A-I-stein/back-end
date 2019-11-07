@@ -7,10 +7,10 @@ package com.aistein.controller;
 
 import com.aistein.model.service.JogoAcessService;
 import com.aistein.model.table.Jogo;
+import com.aistein.util.JSON;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -47,9 +47,7 @@ public class BackToFrontServlet extends HttpServlet {
          */
         switch (req) {
             case "buscarJogo":
-            ArrayList<Jogo> jogo = JogoAcessService.getAllJogo();
-            System.out.println(jogo.toString());
-            resposta = jogo.toString();
+            resposta = JSON.stringify(JogoAcessService.getAllJogo());
 
 
             break;
