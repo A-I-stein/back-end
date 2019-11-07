@@ -6,7 +6,8 @@
 package com.aistein.controller;
 
 import com.aistein.model.service.JogoAcessService;
-import com.aistein.model.table.Jogo;
+
+
 import com.aistein.util.JSON;
 import java.io.IOException;
 import java.io.PrintWriter;

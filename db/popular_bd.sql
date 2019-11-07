@@ -62,20 +62,20 @@ INSERT INTO ImagemAnexaAConteudo (Codigo_Imagem, Codigo_conteudo )
 
 INSERT INTO Jogo(Codigo_Jogo, Nome_Jogo, URL_Jogo, Creditos_Jogo, Codigo_Imagem, Codigo_Materia)
 	VALUES
-		(0,'Massas e Molas: Básico', 'https://phet.colorado.edu/sims/html/masses-and-springs-basics/latest/masses-and-springs-basics_en.html', 'Denzell Barnett (developer)
+		(0,'Massas e Molas: Básico', '<iframe src="https://phet.colorado.edu/sims/html/masses-and-springs-basics/latest/masses-and-springs-basics_pt_BR.html" width="800" height="600" scrolling="no" allowfullscreen></iframe>', 'Denzell Barnett (developer)
 Amy Rouinfar (lead designer)
 Mike Dubson (original designer)
 Wendy Adams
 Ariel Paul
-Kathy Perkins',5,0);
-		(1,'Massas e Molas', 'https://phet.colorado.edu/sims/html/masses-and-springs/latest/masses-and-springs_en.html', 'Denzell Barnett (developer)
+Kathy Perkins',5,0),
+		(1,'Massas e Molas', '<iframe src="https://phet.colorado.edu/sims/html/masses-and-springs/latest/masses-and-springs_pt_BR.html" width="800" height="600" scrolling="no" allowfullscreen></iframe>', 'Denzell Barnett (developer)
 Matt Pennington (developer)
 Amy Rouinfar (lead designer)
 Mike Dubson (original designer)
 Wendy Adams
 Ariel Paul
-Kathy Perkins',6,0);
-		(2,'Gravidade e Órbitas', 'https://phet.colorado.edu/sims/html/gravity-and-orbits/latest/gravity-and-orbits_pt.html', 'Amy Rouinfar (lead designer)
+Kathy Perkins',6,0),
+		(2,'Gravidade e Órbitas', '<iframe src="https://phet.colorado.edu/sims/html/gravity-and-orbits/latest/gravity-and-orbits_pt_BR.html" width="800" height="600" scrolling="no" allowfullscreen></iframe>', 'Amy Rouinfar (lead designer)
 Emily Moore (lead designer)
 Noah Podolefsky (lead designer)
 Trish Loeblein
