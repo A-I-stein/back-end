@@ -81,7 +81,7 @@ ALTER TABLE Imagem ADD CONSTRAINT PK_Imagem PRIMARY KEY (Codigo_Imagem)
 
 CREATE TABLE Materia(
  Codigo_Materia Integer NOT NULL,
- Nome_Materia Character varying(30) NOT NULL
+ Nome_Materia Character varying(50) NOT NULL
 )
 WITH (
  autovacuum_enabled=true)
@@ -157,7 +157,7 @@ ALTER TABLE Administrador ADD CONSTRAINT PK_Administrador PRIMARY KEY (Username)
 
 CREATE TABLE Conteudo(
  Codigo_Conteudo Integer NOT NULL,
- Nome_Conteudo Character varying(30) NOT NULL,
+ Nome_Conteudo Character varying(100) NOT NULL,
  Texto_Conteudo Text NOT NULL,
  Status_Conteudo Character(1),
  Username Character varying(20),
