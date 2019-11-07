@@ -1,6 +1,6 @@
 /*
  * Projeto de Integracao - A.I.Stein
- * CEFET-MG 
+ * CEFET-MG
  * INF-3A 2019
  * Arthut Marcolino, Gabriel Cruz, Heitor Santos, Italo Nascimento
  */
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 /**
  * Classe Conexão com o Content e o BD.
- * Tem como responsabilidade única servir como conexão entre a classe modelo 
+ * Tem como responsabilidade única servir como conexão entre a classe modelo
  * User com o Banco de Dados.
  *
  * @author Gabriel Cruz
@@ -23,10 +23,10 @@ import java.sql.SQLException;
  */
 
 public class ConteudoAccessService {
-    
+
     //Objetos de manipulação interna.
     private static ResultSet result;
-    
+
     //Constantes que representam os nomes das colunas no DB SQL.
     private static final String COD_CONTEUDO;
     private static final String NOME_CONTEUDO;
@@ -38,7 +38,7 @@ public class ConteudoAccessService {
     private static final String RESUMO_CONTEUDO;
     private static final String TIPO_CONTEUDO;
     private static final String FONTE_CONTEUDO;
-    
+
     //Inicialização das constantes
     static{
         COD_CONTEUDO = "Codigo_Conteudo";
@@ -59,31 +59,31 @@ public class ConteudoAccessService {
      * @return os objetos Content encontrados utilizando a query recebida.
      */
     public static ArrayList<Conteudo> get(String query){
-        
+
         ArrayList<Conteudo> conteudos = new ArrayList<>();
-        
+
         try{
             result = SQL.query(query);
-            
+
             if(result.next()) {
                 do{
                     Conteudo conteudo=new Conteudo(
-                            result.getInt(COD_CONTEUDO), 
+                            result.getInt(COD_CONTEUDO),
                             result.getString(NOME_CONTEUDO),
                             result.getString(TEXTO_CONTEUDO),
                             result.getString(STATUS_CONTEUDO).toCharArray()[0],
-                            result.getString(USERNAME), 
+                            result.getString(USERNAME),
                             result.getInt(MATERIA),
                             null,
                             result.getString(RESUMO_CONTEUDO),
                             result.getString(TIPO_CONTEUDO).toCharArray()[0],
                             result.getString(FONTE_CONTEUDO));
-                    
+
                     conteudo.setDataPublicacao(result
                             .getDate(DATA_PUBLICACAO));
-                    
+
                     conteudos.add(conteudo);
-                    
+
                 }while(result.next());
             }else{
                 System.out.println("Nada encontrado com a query fornecida.");
@@ -94,25 +94,26 @@ public class ConteudoAccessService {
         }
         return conteudos;
     }
-    
+
     /**
      * Pesquisa no bd usando o codigo do Conteudo.
      * @param codConteudo
      * @return um objeto Content que corresponde ao codigo recebido.
      */
-    public static Conteudo getConteudoFromCodConteudo(String codConteudo) {
+    public static Conteudo getConteudoFromCodConteudo(Conteudo content) {
+        Int codigo = content.getCodConteudo
         
         ArrayList<Conteudo> conteudos = get("SELECT * FROM conteudo WHERE"
                                      + COD_CONTEUDO + "=" + codConteudo);
-        
+
         if (conteudos==null){
-            System.out.println("Nenhum Conteudo encontrado com esse Codigo" + 
+            System.out.println("Nenhum Conteudo encontrado com esse Codigo" +
                     codConteudo);
             return null;
         }
         return conteudos.get(0);
     }
-    
+
     /**
      * Pesquisa no bd usando o codigo do Conteudo.
      * @param content
@@ -120,18 +121,18 @@ public class ConteudoAccessService {
      */
     public static ArrayList<Conteudo> getConteudoFromNome(Conteudo content) {
         String nome = content.getNomeConteudo
-        
+
         ArrayList<Conteudo> conteudos = get("SELECT * FROM conteudo WHERE"
                                      + NOME_CONTEUDO + "=" + nome);
-        
+
         if (conteudos==null){
-            System.out.println("Nenhum Conteudo encontrado com esse Nome" + 
+            System.out.println("Nenhum Conteudo encontrado com esse Nome" +
                     codConteudo);
             return null;
         }
         return conteudos;
     }
-    
+
     /**
      * Pesquisa no bd todas os conteudos.
      * @return todos os objetos Content em um ArrayList.
@@ -139,7 +140,7 @@ public class ConteudoAccessService {
     public static ArrayList<Conteudo> getAll() {
         return get("SELECT * FROM conteudo");
     }
-    
+
     /**
      * Deleta um conteudo do bd usando o codigo do mesmo.
      * @param codConteudo do conteudo a ser removido.
@@ -150,47 +151,47 @@ public class ConteudoAccessService {
                    + codConteudo;
         return SQL.query(stm) == null;
     }
-        
+
     /**
      * Insere um Conteudo no bd
      * @param conteudo
      * @return true se não houver problemas na operação.
      */
     public static boolean insert(Conteudo conteudo){
-  
-        String stm = "INSERT INTO Conteudo (" + COD_CONTEUDO + ", " 
-                   + NOME_CONTEUDO + ", " + TEXTO_CONTEUDO + ", " 
+
+        String stm = "INSERT INTO Conteudo (" + COD_CONTEUDO + ", "
+                   + NOME_CONTEUDO + ", " + TEXTO_CONTEUDO + ", "
                    + STATUS_CONTEUDO + ", " + USERNAME + ", " + MATERIA + ", "
-                   + DATA_PUBLICACAO + ", " + RESUMO_CONTEUDO + ", " 
+                   + DATA_PUBLICACAO + ", " + RESUMO_CONTEUDO + ", "
                    + TIPO_CONTEUDO + ", " + FONTE_CONTEUDO + ") VALUES ("
                    + conteudo.getCodConteudo()+", '" +conteudo.getNomeConteudo()
-                   + "', '" + conteudo.getTextoConteudo() + "', '" 
+                   + "', '" + conteudo.getTextoConteudo() + "', '"
                    + conteudo.getStatusConteudo()+"', '"+conteudo.getUsername()
-                   + "', " +  conteudo.getMateria() + ", " 
-                   + conteudo.getDataPublicacao() + ", '" 
-                   + conteudo.getResumoConteudo() + "', '" 
-                   + conteudo.getTipoConteudo() + "', '" 
+                   + "', " +  conteudo.getMateria() + ", "
+                   + conteudo.getDataPublicacao() + ", '"
+                   + conteudo.getResumoConteudo() + "', '"
+                   + conteudo.getTipoConteudo() + "', '"
                    + conteudo.getFonteConteudo() + "');";
 
         return SQL.query(stm) == null;
     }
-        
+
     /**
      * Atualiza o conteudo no bd correspondente ao objeto Content recebido
      * @param conteudo
      * @return true se não houver problemas na operação.
      */
     public static boolean update(Conteudo conteudo){
-        
-        String stm = "UPDATE Conteudo SET (" + NOME_CONTEUDO + ", " 
-                   + TEXTO_CONTEUDO + ", " + STATUS_CONTEUDO + ", "  + MATERIA 
-                   + ", " + DATA_PUBLICACAO + ", " + RESUMO_CONTEUDO + ", " 
-                   + TIPO_CONTEUDO + ", " + FONTE_CONTEUDO + ") = ( '" 
-                   + conteudo.getNomeConteudo() + "', '" 
-                   + conteudo.getTextoConteudo() + "', '" 
+
+        String stm = "UPDATE Conteudo SET (" + NOME_CONTEUDO + ", "
+                   + TEXTO_CONTEUDO + ", " + STATUS_CONTEUDO + ", "  + MATERIA
+                   + ", " + DATA_PUBLICACAO + ", " + RESUMO_CONTEUDO + ", "
+                   + TIPO_CONTEUDO + ", " + FONTE_CONTEUDO + ") = ( '"
+                   + conteudo.getNomeConteudo() + "', '"
+                   + conteudo.getTextoConteudo() + "', '"
                    + conteudo.getStatusConteudo()+"', " + conteudo.getMateria()
-                   + ", " + conteudo.getDataPublicacao() + ", '" 
-                   + conteudo.getResumoConteudo() + "', '" 
+                   + ", " + conteudo.getDataPublicacao() + ", '"
+                   + conteudo.getResumoConteudo() + "', '"
                    + conteudo.getTipoConteudo() + "', '"
                    + conteudo.getFonteConteudo() + "');";
 

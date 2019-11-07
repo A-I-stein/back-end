@@ -30,29 +30,33 @@ public class ConteudoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Conteudo frontConteudo = JSON.parse(request.getParameter("tipo"),
-                    Patrimonio.class);
-        String resposta = "";
-        String req = request.getParameter("req");
-        String tipo = request.getParameter("tipo");
-        Boolean res = false;
+              Conteudo frontConteudo = JSON.parse(request.getParameter("tipo"),
+                           Patrimonio.class);
+               String resposta = "";
+               String req = request.getParameter("req");
+               String tipo = request.getParameter("tipo");
+               Boolean res = false;
 
 
-        switch (req) {
-            case "all":
-              ArrayList<Conteudo> conteudo = ConteudoAcessService.getAll();
-              System.out.println(conteudo.toString());
-                resposta = conteudo.toString();
-            break;
-            case "especifico":
-              Conteudo conteudo = ConteudoAcessService.getConteudoFromNomConteudo(frontConteudo);
-              System.out.println(conteudo.toString());
-                resposta = conteudo.toString();
-            break;
-            default:
-        }
-        try (PrintWriter out = response.getWriter()) {
-            out.println(resposta);
+               switch (req) {
+                   case "all":
+                     ArrayList<Conteudo> conteudo = ConteudoAcessService.getAll();
+                     System.out.println(conteudo.toString());
+                       resposta = conteudo.toString();
+                   break;
+                   case "especifico":
+                     Conteudo conteudo = ConteudoAcessService.getConteudoFromNomConteudo(frontConteudo);
+                     System.out.println(conteudo.toString());
+                       resposta = conteudo.toString();
+                   break;
+                   case "codigo":
+                     Conteudo conteudo = ConteudoAcessService.getConteudoCodConteudo(frontConteudo);
+                     System.out.println(conteudo.toString());
+                       resposta = conteudo.toString();
+                   break;
+                   default:
+               }
+               try (PrintWriter out = response.getWriter()) {
         }
     }
 
