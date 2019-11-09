@@ -33,6 +33,8 @@ public class FiltroCORSGeral implements Filter {
         System.out.println("CORSFilter HTTP Request: " + request.getMethod());
         ((HttpServletResponse) res).addHeader("Access-Control-Allow-Origin", "*");
         ((HttpServletResponse) res).addHeader("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST");
+        ((HttpServletResponse) res).setContentType("text/html;charset=UTF-8");
+        req.setCharacterEncoding("utf-8");
         HttpServletResponse response = (HttpServletResponse) res;
         
         // For HTTP OPTIONS verb/method reply with ACCEPTED status code -- per CORS handshake

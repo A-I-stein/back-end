@@ -13,9 +13,7 @@ import com.aistein.model.service.ConteudoAccessService;
 import com.aistein.util.JSON;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,6 +49,7 @@ public class ConteudoServlet extends HttpServlet {
                switch (req) {
                    case "all":
                      resposta = JSON.stringify(ConteudoAccessService.getAll());
+                       System.out.println(resposta);
                    break;
                    case "especifico":
                      resposta = JSON.stringify(ConteudoAccessService.getConteudoFromNome(frontConteudo));

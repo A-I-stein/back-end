@@ -80,6 +80,7 @@ public class ConteudoAccessService {
                             result.getInt(MATERIA));
                     conteudo.setNomeConteudo(
                             result.getString(NOME_CONTEUDO));
+                    System.out.println(result.getString(RESUMO_CONTEUDO));
                     conteudo.setResumoConteudo(
                             result.getString(RESUMO_CONTEUDO));
                     conteudo.setStatusConteudo('A'); //Está null no popular BD 
