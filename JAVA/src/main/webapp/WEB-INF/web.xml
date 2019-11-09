@@ -2,14 +2,11 @@
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
     <filter>
         <filter-name>FiltroCORSGeral</filter-name>
-        <filter-class>com.aistein.controller.FiltroCORSGeral</filter-class>
+        <filter-class>com.aistein.controller.filter.FiltroCORSGeral</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>FiltroCORSGeral</filter-name>
         <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <servlet>
         <servlet-name>JogoServlet</servlet-name>

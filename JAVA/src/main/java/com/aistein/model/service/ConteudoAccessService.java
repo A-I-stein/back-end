@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import com.aistein.model.table.Conteudo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+
 
 /**
  * Classe Conexão com o Content e o BD.
@@ -63,47 +65,55 @@ public class ConteudoAccessService {
         ArrayList<Conteudo> conteudos = new ArrayList<>();
 
         try{
-            result = SQL.query(query);
+             result = SQL.query("SELECT * FROM conteudo " + query);
 
-            if(result.next()) {
-                do{
-                    Conteudo conteudo=new Conteudo(
-                            result.getInt(COD_CONTEUDO),
-                            result.getString(NOME_CONTEUDO),
-                            result.getString(TEXTO_CONTEUDO),
-                            result.getString(STATUS_CONTEUDO).toCharArray()[0],
-                            result.getString(USERNAME),
-                            result.getInt(MATERIA),
-                            null,
-                            result.getString(RESUMO_CONTEUDO),
-                            result.getString(TIPO_CONTEUDO).toCharArray()[0],
+           if (result.next()) {
+                do {
+                    Conteudo conteudo = new Conteudo(); 
+                    conteudo.setCodConteudo(Integer.parseInt(
+                            result.getString(COD_CONTEUDO)));
+                    conteudo.setDataPublicacao(
+                            result.getDate(DATA_PUBLICACAO));
+                    conteudo.setFonteConteudo(
                             result.getString(FONTE_CONTEUDO));
-
-                    conteudo.setDataPublicacao(result
-                            .getDate(DATA_PUBLICACAO));
-
+                    conteudo.setMateria(
+                            result.getInt(MATERIA));
+                    conteudo.setNomeConteudo(
+                            result.getString(NOME_CONTEUDO));
+                    conteudo.setResumoConteudo(
+                            result.getString(RESUMO_CONTEUDO));
+                    conteudo.setStatusConteudo('A'); //Está null no popular BD 
+                    conteudo.setTextoConteudo(              //CRIAR TRATAMENTO DE NULL
+                            result.getString(TEXTO_CONTEUDO));
+                    conteudo.setTipoConteudo('A'); // Está null no popular BD
+                    conteudo.setUsername(
+                            result.getString(USERNAME));
                     conteudos.add(conteudo);
 
-                }while(result.next());
-            }else{
-                System.out.println("Nada encontrado com a query fornecida.");
+                } while (result.next());
+            } else {
+                System.out.println("NENHUM JOGO COM CONDIÇÃO: "
+                        + query + " FOI ENCONTRADO NO BANCO DE DADOS");
+                return null;
             }
-        }catch(SQLException ex) {
-            System.out.println("Ocorreu o Erro:" + ex);
+
+        } catch (SQLException ex) {
+            System.out.println(ex + " at getRowFromId");
             return null;
         }
+
         return conteudos;
     }
 
     /**
      * Pesquisa no bd usando o codigo do Conteudo.
-     * @param codConteudo
+     * @param content
      * @return um objeto Content que corresponde ao codigo recebido.
      */
     public static Conteudo getConteudoFromCodConteudo(Conteudo content) {
         int codigo = content.getCodConteudo();
         
-        ArrayList<Conteudo> conteudos = get("SELECT * FROM conteudo WHERE"
+        ArrayList<Conteudo> conteudos = get("WHERE"
                                      + COD_CONTEUDO + "=" + codigo);
 
         if (conteudos==null){
@@ -122,7 +132,7 @@ public class ConteudoAccessService {
     public static ArrayList<Conteudo> getConteudoFromNome(Conteudo content) {
         String nome = content.getNomeConteudo();
 
-        ArrayList<Conteudo> conteudos = get("SELECT * FROM conteudo WHERE"
+        ArrayList<Conteudo> conteudos = get("WHERE"
                                      + NOME_CONTEUDO + "=" + nome);
 
         if (conteudos==null){
@@ -138,7 +148,14 @@ public class ConteudoAccessService {
      * @return todos os objetos Content em um ArrayList.
      */
     public static ArrayList<Conteudo> getAll() {
-        return get("SELECT * FROM conteudo");
+     ArrayList<Conteudo> conteudo = get("");
+     
+        if (conteudo == null) {
+            System.out.println("NENHUM Conteudo FOI ENCONTRADO NO BANCO DE DADOS");
+            return null;
+        }
+        
+        return conteudo;
     }
 
     /**

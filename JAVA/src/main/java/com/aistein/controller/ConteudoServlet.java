@@ -8,21 +8,25 @@ package com.aistein.controller;
 
 import com.aistein.model.table.Conteudo;
 import com.aistein.model.service.ConteudoAccessService;
+
+
 import com.aistein.util.JSON;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.annotation.WebServlet;
-
 
 /**
  *
  * @author Arthur
  */
+@WebServlet(name = "ConteudoServlet", urlPatterns = {"/ConteudoServlet"})
 public class ConteudoServlet extends HttpServlet {
 
     /**
@@ -57,6 +61,7 @@ public class ConteudoServlet extends HttpServlet {
                    default:
                }
                try (PrintWriter out = response.getWriter()) {
+                   out.println(resposta);
         }
     }
 
