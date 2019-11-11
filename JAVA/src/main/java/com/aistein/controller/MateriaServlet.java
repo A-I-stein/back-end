@@ -6,6 +6,8 @@
  */
 package com.aistein.controller;
 
+import com.aistein.model.service.MateriaAcessService;
+import com.aistein.util.JSON;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,18 +32,22 @@ public class MateriaServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        String resposta = "";
+        String req = request.getParameter("req");
+        String tipo = request.getParameter("tipo");
+        Boolean res = false;
+        /**
+         * Switch que define qual operação será feita, são elas:
+         */
+        switch (req) {
+            case "buscarId":
+                resposta = JSON.stringify(MateriaAcessService.getMateriaById(Integer.parseInt(tipo)));
+                System.out.println(resposta);
+            break;
+            default:
+        }
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MateriaServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MateriaServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.println(resposta);
         }
     }
 
