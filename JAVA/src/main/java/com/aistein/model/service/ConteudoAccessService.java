@@ -83,9 +83,17 @@ public class ConteudoAccessService {
                     System.out.println(result.getString(RESUMO_CONTEUDO));
                     conteudo.setResumoConteudo(
                             result.getString(RESUMO_CONTEUDO));
-                    conteudo.setStatusConteudo('A'); //Está null no popular BD 
-                    conteudo.setTextoConteudo(              //CRIAR TRATAMENTO DE NULL
-                            result.getString(TEXTO_CONTEUDO));
+                    conteudo.setStatusConteudo('a'); //Está null no popular BD 
+                    //conteudo.setStatusConteudo(result.getString(STATUS_CONTEUDO).toCharArray()[0]);
+                    if(result.getString(TEXTO_CONTEUDO) != null){
+                         conteudo.setTextoConteudo(result.getString(TEXTO_CONTEUDO));
+                    }
+                    else{
+                        conteudo.setTextoConteudo("Conteudo Indefinido"); //Está null no popular BD 
+                    }
+                    /*conteudo.setTextoConteudo(              //CRIAR TRATAMENTO DE NULL
+                            result.getString(TEXTO_CONTEUDO));*/
+                    //conteudo.setTipoConteudo(result.getString(TIPO_CONTEUDO).toCharArray()[0]);
                     conteudo.setTipoConteudo('A'); // Está null no popular BD
                     conteudo.setUsername(
                             result.getString(USERNAME));
@@ -124,7 +132,64 @@ public class ConteudoAccessService {
         }
         return conteudos.get(0);
     }
+    
+     /**
+     * Pesquisa no bd usando a materia do Conteudo.
+     * @param content
+     * @return um objeto Content que corresponde à materia recebida.
+     */
+    public static ArrayList<Conteudo> getConteudoFromMateria(Conteudo content) {
+        int materia = content.getMateria();
+        
+        ArrayList<Conteudo> conteudos = get("WHERE"
+                                     + MATERIA + "=" + materia);
 
+        if (conteudos==null){
+            System.out.println("Nenhum Conteudo encontrado com essa Materia" +
+                    materia);
+            return null;
+        }
+        return conteudos;
+    }
+
+     /**
+     * Pesquisa no bd usando a materia do Conteudo.
+     * @param content
+     * @return um objeto Content que corresponde à materia recebida.
+     */
+    public static ArrayList<Conteudo> getConteudoFromUsername(Conteudo content) {
+        String username = content.getUsername();
+        
+        ArrayList<Conteudo> conteudos = get("WHERE"
+                                     + USERNAME + "=" + username);
+
+        if (conteudos==null){
+            System.out.println("Nenhum Conteudo encontrado com esse Username" +
+                    username);
+            return null;
+        }
+        return conteudos;
+    }
+    
+     /**
+     * Pesquisa no bd usando o tipo do Conteudo.
+     * @param content
+     * @return um objeto Content que corresponde à materia recebida.
+     */
+    public static ArrayList<Conteudo> getConteudoFromTipo(Conteudo content) {
+        int tipo = content.getTipoConteudo();
+        
+        ArrayList<Conteudo> conteudos = get("WHERE"
+                                     + TIPO_CONTEUDO + "=" + tipo);
+
+        if (conteudos==null){
+            System.out.println("Nenhum Conteudo encontrado com esse Tipo" +
+                    tipo);
+            return null;
+        }
+        return conteudos;
+    }
+    
     /**
      * Pesquisa no bd usando o codigo do Conteudo.
      * @param content

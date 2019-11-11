@@ -53,9 +53,23 @@ public class ConteudoServlet extends HttpServlet {
                    break;
                    case "especifico":
                      resposta = JSON.stringify(ConteudoAccessService.getConteudoFromNome(frontConteudo));
+                     System.out.println(resposta);
                    break;
                    case "codigo":
                      resposta = JSON.stringify(ConteudoAccessService.getConteudoFromCodConteudo(frontConteudo));
+                     System.out.println(resposta);
+                   break;
+                   case "materia":
+                     resposta = JSON.stringify(ConteudoAccessService.getConteudoFromMateria(frontConteudo));
+                     System.out.println(resposta);
+                   break;
+                   case "tipo":
+                     resposta = JSON.stringify(ConteudoAccessService.getConteudoFromTipo(frontConteudo));
+                     System.out.println(resposta);
+                   break;
+                   case "usuario":
+                     resposta = JSON.stringify(ConteudoAccessService.getConteudoFromUsername(frontConteudo));
+                     System.out.println(resposta);
                    break;
                    default:
                }
