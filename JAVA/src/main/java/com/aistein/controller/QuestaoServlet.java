@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Arthur
+ * @author Arthur Marcolino, Gabriel Cruz
  */
 public class QuestaoServlet extends HttpServlet {
 
