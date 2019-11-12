@@ -1,11 +1,11 @@
 ﻿/*
 Created: 08/05/2019
-Modified: 24/10/2019
+Modified: 12/11/2019
 Project: A.I.stein
 Model: PostgreSQL 10
 Company: A.I.stein
 Author: Gabriel Cruz
-Version: 3.0
+Version: 4.0
 Database: PostgreSQL 10
 */
 
@@ -81,7 +81,7 @@ ALTER TABLE Imagem ADD CONSTRAINT PK_Imagem PRIMARY KEY (Codigo_Imagem)
 
 CREATE TABLE Materia(
  Codigo_Materia Integer NOT NULL,
- Nome_Materia Character varying(50) NOT NULL
+ Nome_Materia Character varying(30) NOT NULL
 )
 WITH (
  autovacuum_enabled=true)
@@ -157,7 +157,7 @@ ALTER TABLE Administrador ADD CONSTRAINT PK_Administrador PRIMARY KEY (Username)
 
 CREATE TABLE Conteudo(
  Codigo_Conteudo Integer NOT NULL,
- Nome_Conteudo Character varying(100) NOT NULL,
+ Nome_Conteudo Character varying(30) NOT NULL,
  Texto_Conteudo Text NOT NULL,
  Status_Conteudo Character(1),
  Username Character varying(20),
@@ -246,38 +246,24 @@ CREATE INDEX IX_Relationship19 ON Questionario (Codigo_Materia)
 ALTER TABLE Questionario ADD CONSTRAINT PK_Questionario PRIMARY KEY (Codigo_Questionario)
 ;
 
--- Table Pergunta
+-- Table Questão
 
-CREATE TABLE Pergunta(
- Codigo_Pergunta Integer NOT NULL,
+CREATE TABLE Questao(
+ Codigo_Questao Integer NOT NULL,
  Descricao_Pergunta Text NOT NULL,
- Codigo_Questionario Integer NOT NULL
-)
-WITH (
- autovacuum_enabled=true)
-;
-
--- Add keys for table Pergunta
-
-ALTER TABLE Pergunta ADD CONSTRAINT PK_Pergunta PRIMARY KEY (Codigo_Pergunta,Codigo_Questionario)
-;
-
--- Table Resposta
-
-CREATE TABLE Resposta(
- Codigo_Resposta Integer NOT NULL,
- Descricao_Resposta Character varying NOT NULL,
- Codigo_Pergunta Integer NOT NULL,
  Codigo_Questionario Integer NOT NULL,
- Resposta_Correta Boolean NOT NULL
+ Descricao_Resposta_Correta Text NOT NULL,
+ Descricao_Resposta_Incorreta_1 Text NOT NULL,
+ Descricao_Resposta_Incorreta_2 Text NOT NULL,
+ Descricao_Resposta_Incorreta_3 Text NOT NULL
 )
 WITH (
  autovacuum_enabled=true)
 ;
 
--- Add keys for table Resposta
+-- Add keys for table Questão
 
-ALTER TABLE Resposta ADD CONSTRAINT PK_Resposta PRIMARY KEY (Codigo_Resposta,Codigo_Pergunta,Codigo_Questionario)
+ALTER TABLE Questao ADD CONSTRAINT PK_Questao PRIMARY KEY (Codigo_Questao,Codigo_Questionario)
 ;
 -- Create foreign keys (relationships) section ------------------------------------------------- 
 
@@ -323,10 +309,7 @@ ALTER TABLE Jogo ADD CONSTRAINT Relationship18 FOREIGN KEY (Codigo_Materia) REFE
 ALTER TABLE Questionario ADD CONSTRAINT Relationship19 FOREIGN KEY (Codigo_Materia) REFERENCES Materia (Codigo_Materia) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE Pergunta ADD CONSTRAINT Relationship22 FOREIGN KEY (Codigo_Questionario) REFERENCES Questionario (Codigo_Questionario) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE Resposta ADD CONSTRAINT Relationship23 FOREIGN KEY (Codigo_Pergunta, Codigo_Questionario) REFERENCES Pergunta (Codigo_Pergunta, Codigo_Questionario) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE Questao ADD CONSTRAINT Relationship22 FOREIGN KEY (Codigo_Questionario) REFERENCES Questionario (Codigo_Questionario) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 
