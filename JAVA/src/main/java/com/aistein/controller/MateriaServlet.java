@@ -41,7 +41,7 @@ public class MateriaServlet extends HttpServlet {
          */
         switch (req) {
             case "buscarId":
-                resposta = JSON.stringify(MateriaAcessService.getMateriaById(Integer.parseInt(tipo)));
+                resposta = JSON.stringify(MateriaAcessService.getMateriaFromCodMateria(Integer.parseInt(tipo)));
                 System.out.println(resposta);
             break;
             default:

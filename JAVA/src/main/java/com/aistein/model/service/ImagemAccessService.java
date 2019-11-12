@@ -76,10 +76,10 @@ public class ImagemAccessService {
     public static Imagem getImagemFromCodImagem(int codImagem) {
         
         ArrayList<Imagem> imagens = get("SELECT * FROM imagem WHERE"
-                                     + CODIGO_IMAGEM + "=" + codImagem);
+                                     + CODIGO_IMAGEM + " = " + codImagem);
         
         if (imagens==null){
-            System.out.println("Nenhum gênero encontrado com esse Código" + 
+            System.out.println("Nenhuma imagem encontrada com esse Código" + 
                     codImagem);
             return null;
         }

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import com.aistein.model.table.Conteudo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 
 /**
@@ -83,18 +82,17 @@ public class ConteudoAccessService {
                     System.out.println(result.getString(RESUMO_CONTEUDO));
                     conteudo.setResumoConteudo(
                             result.getString(RESUMO_CONTEUDO));
-                    conteudo.setStatusConteudo('a'); //Está null no popular BD 
-                    //conteudo.setStatusConteudo(result.getString(STATUS_CONTEUDO).toCharArray()[0]);
+                    conteudo.setStatusConteudo(result.
+                            getString(STATUS_CONTEUDO).toCharArray()[0]);
                     if(result.getString(TEXTO_CONTEUDO) != null){
-                         conteudo.setTextoConteudo(result.getString(TEXTO_CONTEUDO));
+                        conteudo.setTextoConteudo(result.
+                                getString(TEXTO_CONTEUDO));
                     }
                     else{
-                        conteudo.setTextoConteudo("Conteudo Indefinido"); //Está null no popular BD 
+                        conteudo.setTextoConteudo("Conteudo Indefinido"); 
                     }
-                    /*conteudo.setTextoConteudo(              //CRIAR TRATAMENTO DE NULL
-                            result.getString(TEXTO_CONTEUDO));*/
-                    //conteudo.setTipoConteudo(result.getString(TIPO_CONTEUDO).toCharArray()[0]);
-                    conteudo.setTipoConteudo('A'); // Está null no popular BD
+                    conteudo.setTipoConteudo(result.getString(TIPO_CONTEUDO).
+                            toCharArray()[0]);
                     conteudo.setUsername(
                             result.getString(USERNAME));
                     conteudos.add(conteudo);
@@ -158,7 +156,7 @@ public class ConteudoAccessService {
      * @param content
      * @return um objeto Content que corresponde à materia recebida.
      */
-    public static ArrayList<Conteudo> getConteudoFromUsername(Conteudo content) {
+    public static ArrayList<Conteudo> getConteudoFromUsername(Conteudo content){
         String username = content.getUsername();
         
         ArrayList<Conteudo> conteudos = get("WHERE "
@@ -219,7 +217,8 @@ public class ConteudoAccessService {
      ArrayList<Conteudo> conteudo = get("");
      
         if (conteudo == null) {
-            System.out.println("NENHUM Conteudo FOI ENCONTRADO NO BANCO DE DADOS");
+            System.out.println("NENHUM Conteudo FOI ENCONTRADO NO BANCO DE DAD"
+                    + "OS");
             return null;
         }
         
