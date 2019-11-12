@@ -5,7 +5,7 @@ Project: A.I.stein
 Model: PostgreSQL 10
 Company: A.I.stein
 Author: Gabriel Cruz
-Version: 4.0
+Version: 3.0
 Database: PostgreSQL 10
 */
 
@@ -390,7 +390,7 @@ INSERT INTO Jogo(Codigo_Jogo, Nome_Jogo, URL_Jogo, Creditos_Jogo, Codigo_Imagem,
 			Ariel Paul
 			Kathy Perkins
 			Carl Wieman',30,3),
-		(31'Atrito', '<iframe src="https://phet.colorado.edu/sims/html/friction/latest/friction_pt.html" width="800" height="600" scrolling="no" allowfullscreen></iframe>', 'Noah Podolefsky (lead)
+		(31,'Atrito', '<iframe src="https://phet.colorado.edu/sims/html/friction/latest/friction_pt.html" width="800" height="600" scrolling="no" allowfullscreen></iframe>', 'Noah Podolefsky (lead)
 			Michael Dubson (lead, developer)
 			John Blanco (developer)
 			Jonathan Olson (developer)
@@ -431,7 +431,7 @@ INSERT INTO Jogo(Codigo_Jogo, Nome_Jogo, URL_Jogo, Creditos_Jogo, Codigo_Imagem,
 			Ariel Paul
 			Kathy Perkins
 			Katie Woessner
-			Cheryl McCutchan (graphic arts',33,5),Balancing Act
+			Cheryl McCutchan (graphic arts',33,5),
 		(35,'Espectro do Corpo Negro', '<iframe src="https://phet.colorado.edu/sims/html/blackbody-spectrum/latest/blackbody-spectrum_pt.html" width="800" height="600" scrolling="no" allowfullscreen></iframe>', 'Arnab Purkayastha (developer)
 			Saurabh Totey (developer)
 			Martin Veillette (developer)
@@ -560,13 +560,19 @@ INSERT INTO Jogo(Codigo_Jogo, Nome_Jogo, URL_Jogo, Creditos_Jogo, Codigo_Imagem,
 
 INSERT INTO Questionario(Codigo_Questionario, Codigo_Materia)
 	VALUES
-		(0,1);
+		(0,0),
+		(1,1),
+		(2,2),
+		(3,3),
+		(4,4),
+		(5,5),
+		(6,6);
 
 INSERT INTO Questao(Codigo_Questionario, Codigo_Questao, Descricao_Pergunta, Descricao_Resposta_Correta, Descricao_Resposta_Incorreta_1, Descricao_Resposta_Incorreta_2, Descricao_Resposta_Incorreta_3)
 	VALUES
-		(0, 0,'Pergunta', 'Resp_Correta', 'Resp_1', 'Resp_2', 'Resp_3'),
-		(0, 1,'Pergunta', 'Resp_Correta', 'Resp_1', 'Resp_2', 'Resp_3'),
-		(0, 2,'Pergunta', 'Resp_Correta', 'Resp_1', 'Resp_2', 'Resp_3'),
+		(0, 0,'Uma pessoa possui, na superfície da Terra, ao nível do mar, uma massa de 48 kg. Sabendo-se que a aceleração da gravidade na superfície da Lua é cerca de seis vezes menor que na superfície da Terra, ao nível do mar, podemos afirmar, com relação a essa pessoa, que:', 'Seu peso, na superfície na Lua, é aproximadamente 8 Kg/F', 'Seu peso, na superfície na Lua, é aproximadamente 48 Kg/F', 'Sua massa, na superfície na Lua, é aproximadamente 384 Kg/F', 'Seu peso é o mesmo, tanto na superfície da Lua, quanto na superfície da Terra, ao nível do mar'),
+		(0, 1,'Uma partícula de massa igual a 10 kg é submetida a duas forças perpendiculares entre si, cujos módulos são 3,0N e 4,0N. Pode-se afirmar que o módulo de sua aceleração é em m/s ao quadrado:', '0,5', '5,0', '0,7', '7,0'),
+		(0, 2,'Um menino pesa 400 N na superfície da Terra, onde se adota g = 10 m/s2. Se o menino fosse transportado para uma nave, onde a aceleração da gravidade é quatro vezes menor, a sua massa e seu peso seriam, respectivamente:', '40 Kg e 100 N', '40 Kg e 200N', '20 Kg e 200 N', '20 Kg e 400N'),
 		(0, 3,'Pergunta', 'Resp_Correta', 'Resp_1', 'Resp_2', 'Resp_3'),
 		(0, 4,'Pergunta', 'Resp_Correta', 'Resp_1', 'Resp_2', 'Resp_3'),
 		(0, 5,'Pergunta', 'Resp_Correta', 'Resp_1', 'Resp_2', 'Resp_3'),
