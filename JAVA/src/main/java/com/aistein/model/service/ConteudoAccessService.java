@@ -122,8 +122,9 @@ public class ConteudoAccessService {
     public static Conteudo getConteudoFromCodConteudo(Conteudo content) {
         int codigo = content.getCodConteudo();
         
-        ArrayList<Conteudo> conteudos = get("WHERE"
-                                     + COD_CONTEUDO + "=" + codigo);
+        
+        ArrayList<Conteudo> conteudos = get("WHERE "
+                                     + COD_CONTEUDO + " = " + codigo);
 
         if (conteudos==null){
             System.out.println("Nenhum Conteudo encontrado com esse Codigo" +
@@ -141,8 +142,8 @@ public class ConteudoAccessService {
     public static ArrayList<Conteudo> getConteudoFromMateria(Conteudo content) {
         int materia = content.getMateria();
         
-        ArrayList<Conteudo> conteudos = get("WHERE"
-                                     + MATERIA + "=" + materia);
+        ArrayList<Conteudo> conteudos = get("WHERE "
+                                     + MATERIA + " = " + materia);
 
         if (conteudos==null){
             System.out.println("Nenhum Conteudo encontrado com essa Materia" +
@@ -160,8 +161,8 @@ public class ConteudoAccessService {
     public static ArrayList<Conteudo> getConteudoFromUsername(Conteudo content) {
         String username = content.getUsername();
         
-        ArrayList<Conteudo> conteudos = get("WHERE"
-                                     + USERNAME + "=" + username);
+        ArrayList<Conteudo> conteudos = get("WHERE "
+                                     + USERNAME + " = " + username);
 
         if (conteudos==null){
             System.out.println("Nenhum Conteudo encontrado com esse Username" +
@@ -179,8 +180,8 @@ public class ConteudoAccessService {
     public static ArrayList<Conteudo> getConteudoFromTipo(Conteudo content) {
         int tipo = content.getTipoConteudo();
         
-        ArrayList<Conteudo> conteudos = get("WHERE"
-                                     + TIPO_CONTEUDO + "=" + tipo);
+        ArrayList<Conteudo> conteudos = get("WHERE "
+                                     + TIPO_CONTEUDO + " = " + tipo);
 
         if (conteudos==null){
             System.out.println("Nenhum Conteudo encontrado com esse Tipo" +
@@ -197,9 +198,10 @@ public class ConteudoAccessService {
      */
     public static ArrayList<Conteudo> getConteudoFromNome(Conteudo content) {
         String nome = content.getNomeConteudo();
+        
 
-        ArrayList<Conteudo> conteudos = get("WHERE"
-                                     + NOME_CONTEUDO + "=" + nome);
+        ArrayList<Conteudo> conteudos = get("WHERE "
+                                     + NOME_CONTEUDO + " = '" + nome + "'");
 
         if (conteudos==null){
             System.out.println("Nenhum Conteudo encontrado com esse Nome" +

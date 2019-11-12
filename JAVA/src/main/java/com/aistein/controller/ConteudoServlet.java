@@ -44,12 +44,13 @@ public class ConteudoServlet extends HttpServlet {
                String req = request.getParameter("req");
                String tipo = request.getParameter("tipo");
                Boolean res = false;
+              
 
 
                switch (req) {
                    case "all":
                      resposta = JSON.stringify(ConteudoAccessService.getAll());
-                       System.out.println(resposta);
+                     System.out.println(resposta);
                    break;
                    case "especifico":
                      resposta = JSON.stringify(ConteudoAccessService.getConteudoFromNome(frontConteudo));
