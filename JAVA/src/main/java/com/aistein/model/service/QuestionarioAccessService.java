@@ -74,14 +74,12 @@ public class QuestionarioAccessService {
 
     /**
      * Pesquisa no bd usando o Codigo da Materia.
-     * @param codQuestionario
+     * @param codigo
      * @return um objeto Questionario que corresponde ao codQuestionario recebido.
      */
 
-    public static ArrayList <Questionario> getFromCodigoMateria (Questionario content) {
-        int codigo = content.getMateria();
-    
-        
+    public static ArrayList <Questionario> getFromCodigoMateria (int codigo) {
+        System.out.println(codigo);     
         
         ArrayList<Questionario> questoes = get("WHERE "
                                      + MATERIA + " = " + codigo);

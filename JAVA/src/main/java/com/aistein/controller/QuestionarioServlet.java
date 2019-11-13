@@ -44,13 +44,13 @@ public class QuestionarioServlet extends HttpServlet {
                String req = request.getParameter("req");
                String tipo = request.getParameter("tipo");
                Boolean res = false;
-               System.out.println(req);
+               System.out.println(frontConteudo.getCodQuestionario());
               
 
 
                switch (req) {
                    case "all":
-                     questionarios = QuestionarioAccessService.getFromCodigoMateria(frontConteudo);
+                     questionarios = QuestionarioAccessService.getFromCodigoMateria(frontConteudo.getCodQuestionario());
                      Collections.shuffle(questionarios); 
                      int codigo =  questionarios.get(0).getCodQuestionario();
                      resposta = JSON.stringify(QuestaoAccessService.getQuestoesFromCodQuest(codigo));

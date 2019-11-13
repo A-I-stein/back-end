@@ -114,29 +114,29 @@ public class QuestaoAccessService {
      * @param codPerg da pergunta a ser removida.
      * @param codQuest da pergunta a ser removida.
      * @return true se a operação for bem sucedida e false se não for.
-     */
-    public static boolean delete(int codPerg, int codQuest) {
-        String stm = "DELETE FROM pergunta WHERE "
-                                      + COD_PERGUNTA + " = " + codPerg + "AND"
-                                      + COD_QUESTIONARIO + " = " + codQuest;
-        return SQL.query(stm) == null;
-    }
+//     */
+//    public static boolean delete(int codPerg, int codQuest) {
+//        String stm = "DELETE FROM pergunta WHERE "
+//                                      + COD_PERGUNTA + " = " + codPerg + "AND"
+//                                      + COD_QUESTIONARIO + " = " + codQuest;
+//        return SQL.query(stm) == null;
+//    }
         
     /**
      * Insere uma Pergunta no bd
      * @param pergunta
      * @return true se não houver problemas na operação.
      */
-    public static boolean insert(Questao questao){
-
-        String stm = "INSERT INTO pergunta (" + COD_QUESTIONARIO + ", " 
-                   + COD_PERGUNTA + ", " + DESC_PERGUNTA + ") VALUES (" 
-                   + questao.getCodQuestionario() + ", "
-                   + questao.getDescRespIncorreta3() + ", '"
-                   + questao.getDescPergunta() + "');" ;
-
-        return SQL.query(stm) == null;
-    }
+//    public static boolean insert(Questao questao){
+//
+//        String stm = "INSERT INTO pergunta (" + COD_QUESTIONARIO + ", " 
+//                   + COD_PERGUNTA + ", " + DESC_PERGUNTA + ") VALUES (" 
+//                   + questao.getCodQuestionario() + ", "
+//                   + questao.getDescRespIncorreta3() + ", '"
+//                   + questao.getDescPergunta() + "');" ;
+//
+//        return SQL.query(stm) == null;
+//    }
        
     /**
      * Atualiza a pergunta no bd correspondente ao objeto Pergunta recebido
