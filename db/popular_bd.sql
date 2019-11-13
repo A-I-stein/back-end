@@ -590,7 +590,7 @@ INSERT INTO Questao(Codigo_Questionario, Codigo_Questao, Descricao_Pergunta, Des
 		(1, 6,'A física clássica mostra que velocidade instantânea de um objeto no instante t é o limite das velocidades', 'médias do objeto calculadas em intervalos de tempo cada vez menores, contendo t.', 'maiores do objeto calculadas em intervalos de tempo cada vez maiores, contendo t.', 'médias do objeto calculadas em intervalos de tempo cada vez maiores, contendo t.', 'médias do objeto calculadas em um determinado intervalo de tempo t.'),
 		(1, 7,'Um corpo efetua um movimento retilíneo obedecendo à função horária: 
 		       S(t) = 5 (m/s2 ) t2 + 4 (m), onde t é dado em segundos. 
-		       Considerando que esse corpo possui uma massa de 5 Kg qual é o valor da força aplicada ao movimento desse corpo? ', '', '', '', ''),
+		       Considerando que esse corpo possui uma massa de 5 Kg qual é o valor da força aplicada ao movimento desse corpo? ', '50N', '20N', '12,5N', '25N'),
 		(1, 8,'Considere as quatro afirmações seguintes.
 	I. No MRUV, a velocidade varia linearmente com o tempo.
 	II. Um carro em marcha à ré não pode realizar movimento acelerado.
