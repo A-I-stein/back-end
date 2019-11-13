@@ -65,10 +65,11 @@ public class ConteudoAccessService {
 
         try{
              result = SQL.query("SELECT * FROM conteudo " + query);
-
+             System.out.println("teste");
            if (result.next()) {
                 do {
                     Conteudo conteudo = new Conteudo(); 
+                    
                     conteudo.setCodConteudo(Integer.parseInt(
                             result.getString(COD_CONTEUDO)));
                     conteudo.setDataPublicacao(
@@ -79,11 +80,15 @@ public class ConteudoAccessService {
                             result.getInt(MATERIA));
                     conteudo.setNomeConteudo(
                             result.getString(NOME_CONTEUDO));
-                    System.out.println(result.getString(RESUMO_CONTEUDO));
                     conteudo.setResumoConteudo(
                             result.getString(RESUMO_CONTEUDO));
-                    conteudo.setStatusConteudo(result.
-                            getString(STATUS_CONTEUDO).toCharArray()[0]);
+                    if(result.getString(STATUS_CONTEUDO) != null){
+                        conteudo.setStatusConteudo(result.
+                                getString(STATUS_CONTEUDO).toCharArray()[0]);
+                    }
+                    else{
+                        conteudo.setStatusConteudo('n'); 
+                    }                   
                     if(result.getString(TEXTO_CONTEUDO) != null){
                         conteudo.setTextoConteudo(result.
                                 getString(TEXTO_CONTEUDO));
@@ -95,8 +100,9 @@ public class ConteudoAccessService {
                             toCharArray()[0]);
                     conteudo.setUsername(
                             result.getString(USERNAME));
+                    
                     conteudos.add(conteudo);
-
+                    
                 } while (result.next());
             } else {
                 System.out.println("NENHUM JOGO COM CONDIÇÃO: "
@@ -108,7 +114,6 @@ public class ConteudoAccessService {
             System.out.println(ex + " at getRowFromId");
             return null;
         }
-
         return conteudos;
     }
 
@@ -160,7 +165,7 @@ public class ConteudoAccessService {
         String username = content.getUsername();
         
         ArrayList<Conteudo> conteudos = get("WHERE "
-                                     + USERNAME + " = " + username);
+                                     + USERNAME + " = '" + username + "'");
 
         if (conteudos==null){
             System.out.println("Nenhum Conteudo encontrado com esse Username" +
@@ -176,10 +181,11 @@ public class ConteudoAccessService {
      * @return um objeto Content que corresponde à materia recebida.
      */
     public static ArrayList<Conteudo> getConteudoFromTipo(Conteudo content) {
-        int tipo = content.getTipoConteudo();
+        char tipo = content.getTipoConteudo();
+        System.out.println(tipo);
         
         ArrayList<Conteudo> conteudos = get("WHERE "
-                                     + TIPO_CONTEUDO + " = " + tipo);
+                                     + TIPO_CONTEUDO + " = '" + tipo + "'");
 
         if (conteudos==null){
             System.out.println("Nenhum Conteudo encontrado com esse Tipo" +
@@ -198,8 +204,8 @@ public class ConteudoAccessService {
         String nome = content.getNomeConteudo();
         
 
-        ArrayList<Conteudo> conteudos = get("WHERE "
-                                     + NOME_CONTEUDO + " = '" + nome + "'");
+        ArrayList<Conteudo> conteudos = get("WHERE UPPER("
+                                     + NOME_CONTEUDO + ") = UPPER('" + nome + "')");
 
         if (conteudos==null){
             System.out.println("Nenhum Conteudo encontrado com esse Nome" +
@@ -214,11 +220,13 @@ public class ConteudoAccessService {
      * @return todos os objetos Content em um ArrayList.
      */
     public static ArrayList<Conteudo> getAll() {
-     ArrayList<Conteudo> conteudo = get("");
+       
+                     
+         ArrayList<Conteudo> conteudo = get("");
+   
      
         if (conteudo == null) {
-            System.out.println("NENHUM Conteudo FOI ENCONTRADO NO BANCO DE DAD"
-                    + "OS");
+            System.out.println("NENHUM Conteudo FOI ENCONTRADO NO BANCO DE DADOS");
             return null;
         }
         

@@ -44,6 +44,7 @@ public class ConteudoServlet extends HttpServlet {
                String req = request.getParameter("req");
                String tipo = request.getParameter("tipo");
                Boolean res = false;
+               System.out.println(req);
               
 
 
@@ -51,6 +52,7 @@ public class ConteudoServlet extends HttpServlet {
                    case "all":
                      resposta = JSON.stringify(ConteudoAccessService.getAll());
                      System.out.println(resposta);
+                     
                    break;
                    case "especifico":
                      resposta = JSON.stringify(ConteudoAccessService.getConteudoFromNome(frontConteudo));
@@ -65,6 +67,7 @@ public class ConteudoServlet extends HttpServlet {
                      System.out.println(resposta);
                    break;
                    case "tipo":
+                     System.out.println(req);
                      resposta = JSON.stringify(ConteudoAccessService.getConteudoFromTipo(frontConteudo));
                      System.out.println(resposta);
                    break;
