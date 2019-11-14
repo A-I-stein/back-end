@@ -70,13 +70,13 @@ INSERT INTO Imagem (Codigo_Imagem, Caminho_Imagem)
 
 INSERT INTO Materia(Codigo_Materia, Nome_Materia)
 	VALUES
-		(0,'Movimento'),
+		(0,'Leis de Newton'),
 		(1,'Som e Ondas'),
-		(2,'Trabalho, Energia e Potência'),
+		(2,'Energia e Potência'),
 		(3,'Calor e Termodinâmica'),
 		(4,'Mecânica Quântica'),
 		(5,'Luz e Radiação'),
-		(6,'Electricidade, Magnetismo e Circuitos');
+		(6,'Eletromagnetismo');
 
 INSERT INTO Usuario (Username, Nome, Senha, Email, Data_Cadastro, Identificador_Tipo, Foto, Genero, Data_Nascimento)
 	VALUES
