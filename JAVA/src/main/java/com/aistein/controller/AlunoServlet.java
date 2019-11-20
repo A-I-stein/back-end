@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Arthur
+ * @author Heitor
  */
 public class AlunoServlet extends HttpServlet {
 

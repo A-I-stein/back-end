@@ -12,7 +12,7 @@ import java.sql.SQLException;
 /**
  * Classe que possui os dados que permitem a conexão com o Banco de Dados.
  * 
- * @author Arthur Marcolino
+ * @author Arthur Marcolino, Gabriel
  * @version 1.1
  */
 public class SQLConnection {

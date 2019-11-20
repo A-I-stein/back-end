@@ -8,7 +8,6 @@ package com.aistein.controller;
 
 import com.aistein.model.service.QuestionarioAccessService;
 import com.aistein.model.service.QuestaoAccessService;
-import com.aistein.model.table.Conteudo;
 import com.aistein.model.table.Questionario;
 import com.aistein.util.JSON;
 import java.io.IOException;
@@ -22,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Arthur
+ * @author Italo Fidelis
  */
 public class QuestionarioServlet extends HttpServlet {
 
@@ -37,20 +36,21 @@ public class QuestionarioServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-              Questionario frontConteudo = JSON.parse(request.getParameter("tipo"),
-                          Questionario.class);
+              
               ArrayList <Questionario> questionarios;
                String resposta = "";
                String req = request.getParameter("req");
                String tipo = request.getParameter("tipo");
                Boolean res = false;
-               System.out.println(frontConteudo.getCodQuestionario());
               
 
 
                switch (req) {
                    case "all":
-                     questionarios = QuestionarioAccessService.getFromCodigoMateria(frontConteudo.getCodQuestionario());
+                    Questionario frontConteudo;
+                    frontConteudo = JSON.parse(tipo, Questionario.class);
+                    int aux = frontConteudo.getCodQuestionario();
+                     questionarios = QuestionarioAccessService.getFromCodigoMateria(aux);
                      Collections.shuffle(questionarios); 
                      int codigo =  questionarios.get(0).getCodQuestionario();
                      resposta = JSON.stringify(QuestaoAccessService.getQuestoesFromCodQuest(codigo));

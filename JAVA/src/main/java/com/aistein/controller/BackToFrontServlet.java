@@ -47,13 +47,7 @@ public class BackToFrontServlet extends HttpServlet {
          * Switch que define qual operação será feita, são elas:
          */
         switch (req) {
-            case "buscarJogo":
-            resposta = JSON.stringify(JogoAcessService.getAllJogo());
-
-
-            break;
-
-            default:
+       
         }
         try (PrintWriter out = response.getWriter()) {
             out.println(resposta);

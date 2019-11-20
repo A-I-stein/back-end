@@ -33,8 +33,8 @@ public class ImagemAccessService {
     
     //Inicialização das constantes
     static{
-        CODIGO_IMAGEM = "Codigo_Imagem";
-        CAMINHO_IMAGEM = "Nome_Imagem";
+        CODIGO_IMAGEM = "codigo_imagem";
+        CAMINHO_IMAGEM = "caminho_imagem";
     }
 
     /**
@@ -74,9 +74,10 @@ public class ImagemAccessService {
      * @return um objeto Imagem que corresponde ao codImagem recebido.
      */
     public static Imagem getImagemFromCodImagem(int codImagem) {
-        
-        ArrayList<Imagem> imagens = get("SELECT * FROM imagem WHERE"
-                                     + CODIGO_IMAGEM + " = " + codImagem);
+        System.out.println("SELECT * FROM imagem WHERE"
+                                     + CODIGO_IMAGEM + "=" + codImagem);
+        ArrayList<Imagem> imagens = get("SELECT * FROM imagem WHERE "
+                                     + CODIGO_IMAGEM + "=" + codImagem);
         
         if (imagens==null){
             System.out.println("Nenhuma imagem encontrada com esse Código" + 

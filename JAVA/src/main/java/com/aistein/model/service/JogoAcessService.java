@@ -14,9 +14,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * Classe Conexão com Jogos e o BD.
+ * Tem como responsabilidade única servir como conexão entre a classe modelo 
+ * Jogos com o Banco de Dados.
  *
  * @author Arthur
+ * @version 1.0
  */
+
 public class JogoAcessService {
 
     //Objetos de manipulação interna.
@@ -54,6 +59,20 @@ public class JogoAcessService {
         return jogos;
         
     }
+    
+    public static ArrayList<Jogo> getJogoByMateria(int materia){
+        System.out.println("MATERIA" + materia);
+  
+        ArrayList<Jogo> jogos = get("WHERE " + MATJOGO + "=" + materia);
+        if (jogos == null) {
+            System.out.println("NENHUM JOGO FOI ENCONTRADO NO BANCO DE DADOS");
+            return null;
+        }
+        
+        return jogos;
+        
+    }
+    
     
     
     public static ArrayList<Jogo> get(String condicao) {

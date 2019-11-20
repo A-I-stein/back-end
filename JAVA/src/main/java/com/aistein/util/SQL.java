@@ -10,7 +10,7 @@ import java.sql.Statement;
  * Classe que reúne ações básicas para a realização de requisições ao banco de 
  * dados.
  * 
- * @author Gabriel Cruz
+ * @author Gabriel Cruz, Arthur
  * @version 1.1
  */
 public final class SQL {

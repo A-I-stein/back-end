@@ -44,6 +44,12 @@ public class JogoServlet extends HttpServlet {
                 resposta = JSON.stringify(JogoAcessService.getAllJogo());
                 System.out.println(resposta);
             break;
+            
+            case "buscarByMateria":            
+                resposta = JSON.stringify(JogoAcessService.getJogoByMateria(Integer.parseInt(tipo)));
+                System.out.println(resposta);
+            break;
+            
             default:
         }
         try (PrintWriter out = response.getWriter()) {

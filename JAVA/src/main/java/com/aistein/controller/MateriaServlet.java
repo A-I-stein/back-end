@@ -44,6 +44,10 @@ public class MateriaServlet extends HttpServlet {
                 resposta = JSON.stringify(MateriaAcessService.getMateriaFromCodMateria(Integer.parseInt(tipo)));
                 System.out.println(resposta);
             break;
+            case "buscarTodos":
+                resposta = JSON.stringify(MateriaAcessService.getAll());
+                System.out.println(resposta);
+            break;
             default:
         }
         try (PrintWriter out = response.getWriter()) {
